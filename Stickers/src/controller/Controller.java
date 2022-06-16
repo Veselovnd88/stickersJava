@@ -8,8 +8,8 @@ public class Controller {
 	
 	public Controller() {
 		this.model = new Model();
-		model.getLabels();
-		model.save();
+		model.getLabel();
+		model.saveAll();
 		
 		
 	}
