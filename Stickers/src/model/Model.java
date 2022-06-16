@@ -21,7 +21,10 @@ public class Model {
 		labels.add(lab);
 	}
 	
-	
+	//всё сохраняется в отдельную папку.
+	//TODO собирать все Images в отдельный список и потом формировать один jpeg из всех объектов
+	//консольный ввод - 3 варианта этикеток - где меняется только серийный номер
+	//
 	public void save() {
 		while(labels.size()!=0) {
 			Label label = labels.get(0);
