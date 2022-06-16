@@ -25,9 +25,14 @@ public class Model {
 	public void save() {
 		while(labels.size()!=0) {
 			Label label = labels.get(0);
-			File file = new File("resources/"+label.getSerial() + ".jpg");//не создается файл
+			labels.remove(0);
+			
+			File file = new File("src/controller/outfile/"+label.getSerial().
+					replace(' ', '_') + ".jpg");//не создается файл
+			System.out.println(file.toString());
 		   	BufferedImage bi = (BufferedImage) label.createImage();
 		   	try {
+		   	
 		   	ImageIO.write(bi, "jpg", file);}
 		   	catch (IOException e) {
 		   		e.printStackTrace();
