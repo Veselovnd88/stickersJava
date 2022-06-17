@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 
 import model.Label;
 import model.LabelFactory;
-import model.LabelsFiller;
 
 public class Command801877 implements Command{
 	
@@ -40,23 +39,8 @@ public class Command801877 implements Command{
 
 	@Override
 	public void execute() {
-		System.out.println("Введите серийный номер");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String serial_ = br.readLine();
-		this.serial +=serial_;
-		LabelsFiller lf = LabelsFiller.getInstance();
-		Label lb =  model.LabelFactory.getLabel(this.name,this.range,this.pinout, this.serial);
-		
-		
-	}
-
-
-
-	private Label LabelFactory.getLabel(String name2, String range2, String pinout2, String serial2) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
-	
-	
 
 }
