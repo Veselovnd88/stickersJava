@@ -15,6 +15,9 @@ public class Controller {
 		this.model = new Model();
 		this.view = new ConsoleView();
 		view.init();
+		view.askOperation();//в цикл
+		//TODO -ввод команды и передача управления в команду
+		//в view -
 		
 		
 	}

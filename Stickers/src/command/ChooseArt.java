@@ -14,8 +14,8 @@ public class ChooseArt implements Command {
 	}
 	@Override
 	public void execute() {
-		Integer art = view.readArt();
-	
+		Integer art = view.readInt();
+		Integer pos = view.readInt();
 
 	}
 
