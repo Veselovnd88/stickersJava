@@ -5,11 +5,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 public class Model {
+	private Map<Integer,Label> posLabels = new HashMap<>();
+	
 	private List<Label> labels = new ArrayList<>();
 	//собирает строки и передает их  фабрику для получения нужного объекта, и добавляет в список
 	public void getLabel() {
@@ -22,6 +26,11 @@ public class Model {
 	}
 	public List<Label> getLabels(){
 		return labels;
+	}
+	
+	
+	public Map<Integer, Label> getMap(){
+		return posLabels;
 	}
 	
 	public void save(Label label) {

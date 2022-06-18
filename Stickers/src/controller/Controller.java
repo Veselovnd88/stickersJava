@@ -2,6 +2,8 @@ package controller;
 
 
 
+import command.CommandExecutor;
+import command.Operation;
 import model.Model;
 import view.ConsoleView;
 import view.View;
@@ -15,7 +17,12 @@ public class Controller {
 		this.model = new Model();
 		this.view = new ConsoleView();
 		view.init();
-		view.askOperation();//в цикл
+		Operation op = null;
+		do {
+			op = view.askOperation();
+			CommandExecutor.init(this.model, this.view);
+			CommandExecutor.execute(op);}
+		while(op!=Operation.EXIT);
 		//TODO -ввод команды и передача управления в команду
 		//в view -
 		

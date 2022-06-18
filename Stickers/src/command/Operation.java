@@ -1,7 +1,7 @@
 package command;
 
 public enum Operation {
-	
+	INFO,
 	CHOOSE,
 	SHOW,
 	SAVE,
@@ -10,13 +10,15 @@ public enum Operation {
 	public static Operation getOpByOrdinal(Integer i) {
 		switch(i) {
 		case 0:
+			return INFO;
+		case 1:
 			return CHOOSE;
 		
-		case 1:
-			return SHOW;
 		case 2:
-			return SAVE;
+			return SHOW;
 		case 3:
+			return SAVE;
+		case 4:
 			return EXIT;
 			
 		}
