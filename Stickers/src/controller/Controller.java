@@ -20,7 +20,8 @@ public class Controller {
 		Operation op = null;
 		do {
 			op = view.askOperation();
-			CommandExecutor.init(this.model, this.view);
+			CommandExecutor.init(this.model, this.view);// инициализация коммандЭкзекутора моделью и вьюшкой
+			//для передачи в команды этих полей
 			CommandExecutor.execute(op);}
 		while(op!=Operation.EXIT);
 		//TODO -ввод команды и передача управления в команду

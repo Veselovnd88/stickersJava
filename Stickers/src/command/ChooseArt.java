@@ -3,6 +3,7 @@ package command;
 import model.Label;
 import model.LabelFactory;
 import model.Model;
+import model.Paper;
 import view.View;
 
 public class ChooseArt implements Command {
@@ -29,6 +30,9 @@ public class ChooseArt implements Command {
 			model.getMap().put(pos, lab);
 			System.out.println(model.getMap());
 			
+			Paper paper = new Paper();
+			paper.draw(lab.createImage());
+			paper.save();
 		}
 		
 	}
