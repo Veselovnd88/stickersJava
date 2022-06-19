@@ -24,7 +24,7 @@ public class Controller {
 			CommandExecutor.execute(op);}
 		while(op!=Operation.EXIT);
 		//TODO -ввод команды и передача управления в команду
-		//в view -
+
 		
 		
 	}
