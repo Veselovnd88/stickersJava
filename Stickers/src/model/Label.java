@@ -72,5 +72,11 @@ public class Label extends AbstractLabel{
 	public String getSerial() {
 		return this.serial;
 	}
+	public String getName() {
+		return this.name;
+	}
+	public String getRange() {
+		return this.range;
+	}
 
 }

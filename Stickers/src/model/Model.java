@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
 
 public class Model {
-	private Map<Integer,Label> posLabels = new HashMap<>();
+	private Map<Integer,Label> posLabels = new TreeMap<>();
 	private Paper paper = new Paper();
 	private List<Label> labels = new ArrayList<>();
 	//собирает строки и передает их  фабрику для получения нужного объекта, и добавляет в список
@@ -40,7 +41,6 @@ public class Model {
 		//сохранение этикетки в файл
 		File file = new File("src/controller/outfile/"+label.getSerial().
 				replace(' ', '_') + ".jpg");
-		System.out.println(file.toString());
 	   	BufferedImage bi = (BufferedImage) label.createImage();
 	   	try {
 	   	

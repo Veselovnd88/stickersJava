@@ -68,7 +68,7 @@ public class Paper {
 	
 	public void draw(Image im,int x, int y) {
 		g.drawImage(im, x, y, null);
-		System.out.println(coordinates);
+		//System.out.println(coordinates);
 	}
 	
 	public void placeAll(Map<Integer,Label> labels) {
@@ -85,7 +85,7 @@ public class Paper {
 // тестовый метод для сохранения листа А4
 		File file = new File("src/controller/outfile/"+"paper".
 				replace(' ', '_') + ".jpg");
-		System.out.println(file.toString());
+		System.out.println("Файл сохранен "+ file.toString());
 	   	BufferedImage bi = (BufferedImage) myImage;
 	   	try {
 	   	

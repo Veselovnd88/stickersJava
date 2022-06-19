@@ -8,8 +8,7 @@ import view.View;
 
 public class ChooseArt implements Command {
 	private Model model;
-	private View view;
-	
+	private View view;	
 	public ChooseArt(Model model, View view) {
 		this.model = model;
 		this.view = view;
@@ -34,12 +33,11 @@ public class ChooseArt implements Command {
 			//TODO проверять наличие этикеток на позициях и спрашивать пользователя о перезаписи
 			
 			model.getMap().put(pos, lab);
-			System.out.println(model.getMap());//FIXME
-			
-			Paper paper = model.getPaper();//переместить в модель
+			//System.out.println(model.getMap());//FIXME			
+			Paper paper = model.getPaper();
 			//paper.draw(lab.createImage(), 100,100);//FIXME
 			paper.placeAll(model.getMap());
-			paper.save();//FIXME
+			//paper.save();//FIXME
 		}
 		
 	}
