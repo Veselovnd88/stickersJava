@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 public class Model {
 	private Map<Integer,Label> posLabels = new HashMap<>();
-	
+	private Paper paper = new Paper();
 	private List<Label> labels = new ArrayList<>();
 	//собирает строки и передает их  фабрику для получения нужного объекта, и добавляет в список
 	public void getLabel() {
@@ -28,6 +28,9 @@ public class Model {
 		return labels;
 	}
 	
+	public Paper getPaper() {
+		return this.paper;
+	}
 	
 	public Map<Integer, Label> getMap(){
 		return posLabels;

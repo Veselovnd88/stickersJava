@@ -36,8 +36,9 @@ public class ChooseArt implements Command {
 			model.getMap().put(pos, lab);
 			System.out.println(model.getMap());//FIXME
 			
-			Paper paper = new Paper();//FIXME
-			paper.draw(lab.createImage());//FIXME
+			Paper paper = model.getPaper();//переместить в модель
+			//paper.draw(lab.createImage(), 100,100);//FIXME
+			paper.placeAll(model.getMap());
 			paper.save();//FIXME
 		}
 		
