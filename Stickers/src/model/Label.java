@@ -9,7 +9,7 @@ import java.awt.image.ImageObserver;
 
 public class Label extends AbstractLabel{
 	
-	protected static final int WIDTH = 200;
+	protected static final int WIDTH = 200;//TODO изменить на корректные и правильные исходя из DPI 150
 	protected static final int HEIGHT = 80;
 	
 	
@@ -20,15 +20,11 @@ public class Label extends AbstractLabel{
 		this.serial = serial;
 	}
 	
-	@Override
-	public void paint(Graphics g) {
-	      Image img = createImage();
-	      g.drawImage(img, 20,20,(ImageObserver) this);
-		
-	}
 
 	@Override
 	public Image createImage() {
+		//TODO вгрузить и разместить на этикетку 3 картинки - лого
+		//EAC и ГОСТ
 		BufferedImage bufferedImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 	      Graphics g = bufferedImage.getGraphics();
 	      g.fillRect(0, 0, 200, 200);

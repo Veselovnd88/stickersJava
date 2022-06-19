@@ -12,9 +12,14 @@ import javax.imageio.ImageIO;
 
 
 public class Paper {
-	private final int WIDTH = 1240 ;
+	private final int WIDTH = 1240 ;//размер взят для DPI 150
 	private final int HEIGHT = 1754 ;
 	private BufferedImage myImage;
+	//TODO прописать создание листа сразу в конструкторе->создать конструктор без параметров
+	//TODO будет один метод - который будет принимать саму этикетку(Label) и ее позицию
+	//TODO создать Enum под позиции и прописать что чему будет соответсвовать, учитывая что 
+	//макс 12 позиции слева направо,+ прикинуть координаты
+	//TODO сохранение сразу в пдф
 	
 	
 	

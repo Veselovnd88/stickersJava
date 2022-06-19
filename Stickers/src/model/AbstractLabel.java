@@ -11,7 +11,6 @@ public abstract class AbstractLabel {
 	protected String serial;
 	protected final String MANUFACTURER = "ADZ NAGANO GmbH";
 	
-	public abstract void paint(Graphics g);
 	public abstract Image createImage();
 
 }
