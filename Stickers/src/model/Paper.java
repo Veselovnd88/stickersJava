@@ -14,6 +14,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.apache.pdfbox.rendering.PDFRenderer;
+
 
 public class Paper {
 	private final int WIDTH = 1240 ;//размер взят для DPI 150
@@ -93,6 +95,12 @@ public class Paper {
 	   	catch (IOException e) {
 	   		e.printStackTrace();
 	   	}
+	}
+	
+	public void savePdf() {
+		File file = new File("src/controller/outfile/"+"paperPdf".
+				replace(' ', '_') + ".pdf");
+
 	}
 
 }
