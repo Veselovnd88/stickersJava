@@ -16,16 +16,22 @@ public class ChooseArt implements Command {
 
 	@Override
 	public void execute() {
-		System.out.println("Выберите артикул");
-		System.out.println("1- 20.11 1 MPa \n"
-				+ "2- 20.11 10 bar \n"+
-				"3 - 20.11 6 bar\n"+
-				"4 -20.11 0.6 Mpa"
-				);
-		int art = view.readArt();
-		System.out.println("Выберите позицию для этикетки \n"+
-		"1  2  3  4  \n5  6  7  8\n9  10 11 12");
+
+		int art = view.readArt();		
 		int pos = view.readPos();
+		while(true) {
+		if(model.getMap().containsKey(pos)){
+			System.out.println("Эта позиция занята "+model.getMap().get(pos).getName()+" "+
+					model.getMap().get(pos).getSerial()+"\nПерезаписать?"
+			);
+			if(view.YesOrNo()) {
+				break;
+			}
+			
+			pos = view.readPos();
+			} else { break;}
+		}
+
 		System.out.println("Введите серийный номер");
 		String serial = view.readSerial();
 		String name="";
@@ -54,16 +60,7 @@ public class ChooseArt implements Command {
 			
 			
 			Label lab = LabelFactory.getLabel(name,range,pinout,serial);
-			//TODO проверять наличие этикеток на позициях и спрашивать пользователя о перезаписи
-			
-			model.getMap().put(pos, lab);
-			//System.out.println(model.getMap());//FIXME			
-			//Paper paper = model.getPaper();
-			//paper.draw(lab.createImage(), 100,100);//FIXME
-			//paper.placeAll(model.getMap());
-			//paper.save();//FIXME
-		
-		
+			model.getMap().put(pos, lab);		
 	}
 
 }

@@ -16,8 +16,8 @@ import javax.imageio.ImageIO;
 
 public class Label extends AbstractLabel{
 	
-	protected static final int WIDTH = 270;//TODO изменить на корректные и правильные исходя из DPI 150- 270
-	protected static final int HEIGHT = 125;//80
+	protected static final int WIDTH = 270;//
+	protected static final int HEIGHT = 125;//
 	BufferedImage bufferedImage;
 	Graphics g;
 	
