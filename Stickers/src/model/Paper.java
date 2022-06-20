@@ -20,6 +20,10 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 public class Paper {
 	private final int WIDTH = 1240 ;//размер взят для DPI 150
 	private final int HEIGHT = 1754 ;
+	
+	private final static int LABELWIDTH = 270;
+	private final static int LABELHEIGHT = 125;
+	
 	private static final HashMap<Integer, List<Integer>> coordinates = new HashMap<>();//мапа с координатами и позициями
 	
 	
@@ -32,27 +36,27 @@ public class Paper {
 		for (int i=1; i<13;i++) {
 			coordinates.put(i, new ArrayList<Integer>());
 			if(i<5) {
-				coordinates.get(i).add(200);
+				coordinates.get(i).add(LABELHEIGHT);
 				if(i==1) {
-				coordinates.get(i).add((100+i*200));}
+				coordinates.get(i).add((59+(i-1)*LABELWIDTH));}
 				else {
-					coordinates.get(i).add(10+i*200);
+					coordinates.get(i).add(17*(i-1)+59+(i-1)*LABELWIDTH);
 				}					
 			}
 			else if(i>=5&& i<9) {
-				coordinates.get(i).add(410);
+				coordinates.get(i).add(LABELHEIGHT*2);
 				if(i==5) {
-				coordinates.get(i).add((100+(i-4)*200));}
+				coordinates.get(i).add((59+(i-5)*LABELWIDTH));}
 				else {
-					coordinates.get(i).add(10+(i-4)*200);
+					coordinates.get(i).add(17*(i-5)+59+(i-5)*LABELWIDTH);
 				}	
 			}
 			else if(i>=9&& i<13) {
-				coordinates.get(i).add(610);
+				coordinates.get(i).add(LABELHEIGHT*3);
 				if(i==9) {
-				coordinates.get(i).add((100+(i-8)*200));}
+				coordinates.get(i).add((59+(i-9)*LABELWIDTH));}
 				else {
-					coordinates.get(i).add(10+(i-8)*200);
+					coordinates.get(i).add(17*(i-9)+59+(i-9)*LABELWIDTH);
 				}	
 			}
 			
@@ -63,7 +67,7 @@ public class Paper {
 	public Paper() {
 		myImage = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 		g = myImage.getGraphics();
-	    g.setColor(Color.YELLOW);//FIXME
+	    g.setColor(Color.WHITE);//FIXME
 	    g.fillRect(0, 0, WIDTH, HEIGHT);
 	}
 

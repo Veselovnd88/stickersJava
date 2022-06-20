@@ -24,6 +24,9 @@ public class Controller {
 			//для передачи в команды этих полей
 			CommandExecutor.execute(op);}
 		while(op!=Operation.EXIT);
+
+		
+		
 		//TODO -ввод команды и передача управления в команду
 
 		
