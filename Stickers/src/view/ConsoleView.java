@@ -3,8 +3,6 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-
 import command.Operation;
 
 public class ConsoleView extends View {
@@ -72,13 +70,14 @@ public class ConsoleView extends View {
 	@Override
 	public Integer readOp() {
 		String messageOp = "Выберите операцию 1 - Выбор номенклатуры,"
-						+ " 2 - показать список того что печатаем, "
-						+ "3 - сохранить в файл";
+						+ " 2 - Показать список того что печатаем, "
+						+ "3 - Сохранить в файл "+
+						"4 - Выйти";
 		System.out.println(messageOp);
 		while(true) {
 				try {
 					Integer i = Integer.parseInt(br.readLine());
-					if(i<4&&i>0) {
+					if(i<5&&i>0) {
 						return i;}
 					else {
 						System.out.println("Неправильно введен номер операции");

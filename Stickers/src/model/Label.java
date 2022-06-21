@@ -5,16 +5,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 public class Label extends AbstractLabel{
+	//TODO - увеличить DPI
 	
 	protected static final int WIDTH = 270;//
 	protected static final int HEIGHT = 125;//

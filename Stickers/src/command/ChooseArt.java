@@ -3,7 +3,6 @@ package command;
 import model.Label;
 import model.LabelFactory;
 import model.Model;
-import model.Paper;
 import view.View;
 
 public class ChooseArt implements Command {
