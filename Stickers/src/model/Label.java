@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -32,13 +33,19 @@ public class Label extends AbstractLabel{
 	}
 	
 	public void addSigns() {
-		File eacFile = new File("src/resources/EAC.png");
-		File rosreestrFile = new File("src/resources/reestr.png");
-		File adzFile = new File ("src/resources/adz.png");
+		//File eacFile = new File("src/resources/EAC.png");
+		
+		//String test = "/EAC.png";
+		//InputStream is = Label.class.getResourceAsStream(test);
+		
+		
+		//File rosreestrFile = new File("src/resources/reestr.png");
+		//File adzFile = new File ("src/resources/adz.png");
 		try {
-			BufferedImage eac = ImageIO.read(eacFile);
-			BufferedImage ros = ImageIO.read(rosreestrFile);
-			BufferedImage adz = ImageIO.read(adzFile);
+			
+			BufferedImage eac = ImageIO.read(Label.class.getResourceAsStream("/EAC.png"));
+			BufferedImage ros = ImageIO.read(Label.class.getResourceAsStream("/reestr.png"));
+			BufferedImage adz = ImageIO.read(Label.class.getResourceAsStream("/adz.png"));
 			g.drawImage(eac.getScaledInstance(40, 40, Image.SCALE_DEFAULT), 230, 20, null);
 			g.drawImage(ros.getScaledInstance(40, 40, Image.SCALE_DEFAULT),230,75,null);
 			g.drawImage(adz.getScaledInstance(80, 80, Image.SCALE_SMOOTH),0,30 , null);

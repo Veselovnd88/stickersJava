@@ -31,9 +31,6 @@ public class Controller {
 			System.out.println("Программа завершена");
 		}
 
-		
-		
-		//TODO -ввод команды и передача управления в команду
 
 		
 		
