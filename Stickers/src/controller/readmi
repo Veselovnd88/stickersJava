@@ -1,0 +1,6 @@
+for Launching create new file in Notepad with .bat extension:
+
+chcp 1251
+java -jar PrintSticker.jar
+
+then save in same directory
