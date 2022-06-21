@@ -12,7 +12,7 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class Label extends AbstractLabel{
-	//TODO - увеличить DPI...
+	//TODO - увеличить DPI...//
 	
 	protected static final int WIDTH = 270;//
 	protected static final int HEIGHT = 125;//
