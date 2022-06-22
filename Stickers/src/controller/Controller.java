@@ -17,7 +17,7 @@ public class Controller {
 	public Controller() {
 		this.model = new Model();
 		this.view = new ConsoleView();
-		view.init();
+
 		Operation op = null;
 		try {
 		do {

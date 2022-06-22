@@ -9,11 +9,7 @@ public class ConsoleView extends View {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	
-	public void init() {
-		
-	}
-	
-	public Operation askOperation() {
+	public Operation askOperation() {//запрос операции, в принципе всю функцию readOp можно перенести сюда
 		Integer i = readOp();
 		return Operation.getOpByOrdinal(i);
 	}
@@ -36,7 +32,6 @@ public class ConsoleView extends View {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	@Override
@@ -88,29 +83,30 @@ public class ConsoleView extends View {
 						System.out.println("Введено не число");
 						System.out.println(messageOp);
 					}
-				
 				catch (IOException e) {
 			e.printStackTrace();
 		}}
 	}
 
 	@Override
-	public Integer readPos() {//TODO ограничение ввода по позициям
+	public Integer readPos() {//FIXME  - можно сделать до 16 этикеток
 		String messagePos = 
 				"Выберите позицию для этикетки \n"+
 				"1  2  3  4  \n5  6  7  8\n9  10 11 12";
 		System.out.println(messagePos);
+		while(true) {
 		try {
 			Integer i = Integer.parseInt(br.readLine());
-			return i;
+			if(i>0&&i<13) {
+				return i;}
 			} catch (IOException e) {
 					e.printStackTrace();
-					return 0;
-			}
+				}
+		}
 	}
 
 	@Override
-	public String readSerial() {
+	public String readSerial() {//чтение серийного номера - без ограничений
 		String serial=null;
 		try {
 			serial = br.readLine();
@@ -119,5 +115,4 @@ public class ConsoleView extends View {
 		}
 		return serial;
 	}
-
 }

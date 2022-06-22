@@ -11,7 +11,6 @@ public class Save implements Command {
 	}
 	@Override
 	public void execute() throws InterruptOperationException {
-		//TODO путь куда сохранен, или окно с выбором пути куда сохранить
 		model.getPaper().placeAll(model.getMap());
 		model.getPaper().save();
 		

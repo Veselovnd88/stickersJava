@@ -27,17 +27,15 @@ public class Paper {
 	private final int WIDTH = 1240 ;//размер взят для DPI 150
 	private final int HEIGHT = 1754 ;
 	
-	private final static int LABELWIDTH = Label.WIDTH;//TODO поменять на статик от лейбла
+	private final static int LABELWIDTH = Label.WIDTH;
 	private final static int LABELHEIGHT = Label.HEIGHT;
 	private static final int LEFTEDGE = 59;
 	
 	private static final HashMap<Integer, List<Integer>> coordinates = new HashMap<>();//мапа с координатами и позициями
-	
-	
+		
 	private BufferedImage myImage;
 	private Graphics g;
 
-	//TODO сохранение сразу в пдф
 	
 	static {//статик блок для инициализации координатами мапы
 		for (int i=1; i<13;i++) {//13 - 12 позиций
@@ -83,19 +81,18 @@ public class Paper {
 		g.drawImage(im, x, y, null);
 		
 	}
-	
+	//метод размещает все этикетки по координатам и рисует на данном Image
 	public void placeAll(Map<Integer,Label> labels) {
 		for(Map.Entry<Integer, Label> entry: labels.entrySet()) {
 			int x = coordinates.get(entry.getKey()).get(1);
 			int y = coordinates.get(entry.getKey()).get(0);
 			draw(entry.getValue().createImage(),x,y );
-			//System.out.println("Рисую картинку с координатами "+ x +" "+ y);//FIXME
+			
 		}
 	}
 	
 	
 	public void save() throws InterruptOperationException {
-// тестовый метод для сохранения листа А4
 		Path path = Path.of("c:\\StickersADZ");
 		
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -109,11 +106,11 @@ public class Paper {
 				if(!Files.exists(file)) {
 					file = Files.createFile(file);
 				}
-				
 				System.out.println("Файл сохранен "+ file.toAbsolutePath().toString());
+				//сохранение файла
+				//TODO сделать сразу раскрытие этой папки в виндоус
 				BufferedImage bi = (BufferedImage) myImage;	
 				ImageIO.write(bi, "jpg", file.toFile());}
-
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			throw new InterruptOperationException();
@@ -122,7 +119,7 @@ public class Paper {
 
 
 
-	
+	//TODO сохранение в pdf
 	public void savePdf() {
 		File file = new File("src/controller/outfile/"+"paperPdf".
 				replace(' ', '_') + ".pdf");
