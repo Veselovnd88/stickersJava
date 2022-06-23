@@ -8,7 +8,6 @@ public abstract class View {
 	public abstract Integer readArt();
 	public abstract Integer readPos();
 	public abstract String readSerial();
-	public abstract void init();
 	public abstract Operation askOperation();
 
 }
