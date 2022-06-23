@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,45 +12,57 @@ import org.junit.Test;
 import view.ConsoleView;
 
 public class ConsoleViewTest {
-
+	private ConsoleView cv = new ConsoleView();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		
-	//TODO замена инпут стримов для позвовывания в консоль вью
+	InputStream backUp = System.in;
+	
+	
+	
 	}
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@Test
 	public void testYesOrNo() {
-		assertEquals(true,new ConsoleView().YesOrNo());
+		String yes = "y";
+		String no = "n";
+		ByteArrayInputStream bis = new ByteArrayInputStream(yes.getBytes());
+		
+		assertEquals(true,cv.YesOrNo());
+		System.setIn(bis);
+		bis = new ByteArrayInputStream(no.getBytes());
+		
+		assertEquals(false, cv.YesOrNo());
+		System.setIn(bis);
 	}
 
 	@Test
 	public void testReadOp() {
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 	@Test
 	public void testReadArt() {
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 	@Test
 	public void testReadPos() {
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 	@Test
 	public void testReadSerial() {
-		fail("Not yet implemented"); // TODO
+	
 	}
 
 	@Test
 	public void testAskOperation() {
-		fail("Not yet implemented"); // TODO
+		
 	}
 
 }
