@@ -12,6 +12,8 @@ public class ConsoleViewTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
+	//TODO замена инпут стримов для позвовывания в консоль вью
 	}
 
 	@Before
