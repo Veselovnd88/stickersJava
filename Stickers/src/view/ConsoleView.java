@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import command.Operation;
+import exception.InterruptOperationException;
 
 public class ConsoleView extends View {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -45,7 +46,7 @@ public class ConsoleView extends View {
 		System.out.println(messageArt);
 		while(true){
 				try {
-					Integer i = Integer.parseInt(br.readLine());
+					Integer i = Integer.parseInt(br.readLine().trim());
 					if(i>0&&i<5) {
 						return i;
 					}
@@ -71,7 +72,7 @@ public class ConsoleView extends View {
 		System.out.println(messageOp);
 		while(true) {
 				try {
-					Integer i = Integer.parseInt(br.readLine());
+					Integer i = Integer.parseInt(br.readLine().trim());
 					if(i<5&&i>0) {
 						return i;}
 					else {
@@ -87,7 +88,7 @@ public class ConsoleView extends View {
 			e.printStackTrace();
 		}}
 	}
-
+	//TODO где то должна быть статическая переменная определяющая количество этикеток
 	@Override
 	public Integer readPos() {//FIXME  - можно сделать до 16 этикеток
 		String messagePos = 
@@ -96,23 +97,32 @@ public class ConsoleView extends View {
 		System.out.println(messagePos);
 		while(true) {
 		try {
-			Integer i = Integer.parseInt(br.readLine());
+			Integer i = Integer.parseInt(br.readLine().trim());
 			if(i>0&&i<13) {
 				return i;}
 			} catch (IOException e) {
-					e.printStackTrace();
+					e.printStackTrace();//TODO пробрасывание исключения для завершения работы, в т.ч. на нуллы
+				}
+			  catch(NumberFormatException nfe) {
+					System.out.println("Введено не число");
+					System.out.println(messagePos);
 				}
 		}
 	}
 
 	@Override
-	public String readSerial() {//чтение серийного номера - без ограничений
+	public String readSerial() {
 		String serial=null;
+		while(true) {
 		try {
 			serial = br.readLine();
+			if(serial.length()!=0) {
+				return serial;
+			}
+			System.out.println("Строка не может быть пустой");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return serial;
+		}
 	}
 }
