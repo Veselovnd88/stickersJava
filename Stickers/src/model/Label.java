@@ -58,23 +58,19 @@ public class Label extends AbstractLabel{
 	@Override
 	public Image createImage() {
 	
-	      //Graphics g = bufferedImage.getGraphics(); 
-	      Font stringFont = new Font("Arial",Font.BOLD,13);
-	      Font stringBold = new Font("Arial",Font.BOLD,15);
-	      this.g.setFont(stringFont);
-	      this.g.setColor(Color.black);
-	      //g.fillRect(0,0,270,125);
-	      //g.setColor(Color.WHITE);
-	      
+	      Font stringFont = new Font("Arial",Font.BOLD,13);//задаем стандартный шрифт
+	      Font stringBold = new Font("Arial",Font.BOLD,15);//задаем жирный шрифт
+	      this.g.setFont(stringFont);//установка обычного шрифта
+	      this.g.setColor(Color.black);//установка цвета шрифта
 
-	      this.g.drawString(range, 80,51);
-	      this.g.drawString(pinout, 80,72);
-	      this.g.drawString("SN: "+serial, 80,93);
-	      this.g.setFont(stringBold);
-	      this.g.drawString(name, 80,30);
-	      this.g.drawString(super.MANUFACTURER, 80,115);
-	      addSigns();
-	      return bufferedImage;
+	      this.g.drawString(range, 80,51);//рисуем диапазон
+	      this.g.drawString(pinout, 80,72);//рисуем распиновку
+	      this.g.drawString("SN: "+serial, 80,93);//рисуем серийный номер
+	      this.g.setFont(stringBold);//устанавливаем жирный шрифт для рисования жирным
+	      this.g.drawString(name, 80,30);//рисуем имя
+	      this.g.drawString(super.MANUFACTURER, 80,115);//рисуем строку производителя
+	      addSigns();//добавляем значки
+	      return this.bufferedImage;//возвращаем наше изображение
 	}
 	
 	public String getSerial() {
