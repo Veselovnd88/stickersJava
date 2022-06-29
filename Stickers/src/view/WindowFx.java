@@ -26,7 +26,7 @@ public class WindowFx extends Application {
 		
 		
 		
-		root.setTop(pane);
+		
 		Scene scene = new Scene(root, 500,500);
 		stage.setMinHeight(500);
 		stage.setMinWidth(500);
