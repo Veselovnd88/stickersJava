@@ -3,12 +3,11 @@ package command;
 import java.util.HashMap;
 import java.util.Map;
 
+import controller.Controller;
 import exception.InterruptOperationException;
-import model.Model;
-import view.View;
 
 public class CommandExecutor {
-	
+
 
 	public static final Map<Operation, Command> allCommands = new HashMap<>();
 
@@ -17,10 +16,10 @@ public class CommandExecutor {
 	}
 	
 	
-	public static void init(Model model, View view) {
-		allCommands.put(Operation.CHOOSE, new ChooseArt(model, view));
-		allCommands.put(Operation.SHOW, new Show(model));
-		allCommands.put(Operation.SAVE, new Save(model));
+	public static void init(Controller controller) {
+		allCommands.put(Operation.CHOOSE, new ChooseArt(controller));
+		allCommands.put(Operation.SHOW, new Show(controller));
+		allCommands.put(Operation.SAVE, new Save(controller));
 		allCommands.put(Operation.EXIT, new Exit());
 
 	}
