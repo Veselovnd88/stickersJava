@@ -4,9 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import command.Operation;
+import controller.Controller;
 import exception.InterruptOperationException;
 
 public class ConsoleView extends View {
+	private Controller contoller;
+	
+	
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	

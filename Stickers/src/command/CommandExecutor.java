@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exception.InterruptOperationException;
-import model.Model;
+import model.MainModel;
 import view.View;
 
 public class CommandExecutor {
@@ -17,7 +17,7 @@ public class CommandExecutor {
 	}
 	
 	
-	public static void init(Model model, View view) {
+	public static void init(MainModel model, View view) {
 		allCommands.put(Operation.CHOOSE, new ChooseArt(model, view));
 		allCommands.put(Operation.SHOW, new Show(model));
 		allCommands.put(Operation.SAVE, new Save(model));

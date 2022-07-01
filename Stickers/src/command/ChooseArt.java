@@ -1,14 +1,19 @@
 package command;
 
+import controller.Controller;
 import model.Label;
 import model.LabelFactory;
-import model.Model;
+import model.MainModel;
 import view.View;
 
 public class ChooseArt implements Command {
-	private Model model;
+	private Controller controller;
+	private MainModel model;
 	private View view;	
-	public ChooseArt(Model model, View view) {
+	
+	
+	public ChooseArt(Controller controller, MainModel model, View view) {
+		this.controller = controller;
 		this.model = model;
 		this.view = view;
 	}
@@ -16,8 +21,8 @@ public class ChooseArt implements Command {
 	@Override
 	public void execute() {
 
-		int art = view.readArt();		
-		int pos = view.readPos();
+		int art = controller.onReadArt();		
+		int pos = controller.onReadPos();
 		while(true) {
 		if(model.getMap().containsKey(pos)){
 			System.out.println("Эта позиция занята "+model.getMap().get(pos).getName()+" "+

@@ -5,18 +5,28 @@ package controller;
 import command.CommandExecutor;
 import command.Operation;
 import exception.InterruptOperationException;
-import model.Model;
-import view.ConsoleView;
+import model.MainModel;
 import view.View;
 
-public class Controller {
-	private Model model;
+public class Controller {//контроллер должен управлять view - выдавать на отображение данные, получать данные из модели, изменять данные в модели и так далее
+	private MainModel model;
 	private View view;
 	
 	
 	public Controller() {
-		this.model = new Model();
-		this.view = new ConsoleView();
+		//this.model = new Model();
+		//this.view = new ConsoleView();
+
+	}
+	
+	public void setView(View view) {
+		this.view = view;
+	}
+	public void setModel(MainModel model) {
+		this.model = model;
+	}
+	
+	public void startConsole() {
 
 		Operation op = null;
 		try {
@@ -30,14 +40,23 @@ public class Controller {
 			
 			System.out.println("Программа завершена");
 		}
+	}
+	
+	public 
+	
+	public int onReadArt() {
+		return view.readArt();
+	}
+	
+	
+	
+	public int onReadPos() {
+		return view.readPos();
+	}
+	
+	
 
 
-		
-		
-	}
-	public static void main(String[] args) {
-		Controller c = new Controller();
-	}
 	
 	
 	

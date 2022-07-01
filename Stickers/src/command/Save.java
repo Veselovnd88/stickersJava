@@ -1,12 +1,12 @@
 package command;
 
 import exception.InterruptOperationException;
-import model.Model;
+import model.MainModel;
 
 public class Save implements Command {
-	private Model model;
+	private MainModel model;
 	
-	public Save(Model model) {
+	public Save(MainModel model) {
 		this.model = model;
 	}
 	@Override

@@ -3,13 +3,13 @@ package command;
 import java.util.Map;
 
 import model.Label;
-import model.Model;
+import model.MainModel;
 
 public class Show implements Command {
-	private Model model;
+	private MainModel model;
 	
 	
-	public Show(Model model) {
+	public Show(MainModel model) {
 		this.model = model;
 	}
 	@Override
