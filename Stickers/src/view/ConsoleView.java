@@ -4,13 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import command.Operation;
-import controller.Controller;
-import exception.InterruptOperationException;
 
 public class ConsoleView extends View {
-	private Controller contoller;
-	
-	
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	
@@ -104,6 +99,9 @@ public class ConsoleView extends View {
 			Integer i = Integer.parseInt(br.readLine().trim());
 			if(i>0&&i<13) {
 				return i;}
+			else {
+				System.out.println("Введите позицию этикетки от 1 до 12");
+			}
 			} catch (IOException e) {
 					e.printStackTrace();//TODO пробрасывание исключения для завершения работы, в т.ч. на нуллы
 				}

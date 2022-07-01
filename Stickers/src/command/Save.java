@@ -1,18 +1,18 @@
 package command;
 
+import controller.Controller;
 import exception.InterruptOperationException;
-import model.MainModel;
 
 public class Save implements Command {
-	private MainModel model;
+	private Controller controller;
+
 	
-	public Save(MainModel model) {
-		this.model = model;
-	}
+	public Save(Controller controller) {
+		this.controller = controller;
+		}
 	@Override
 	public void execute() throws InterruptOperationException {
-		model.getPaper().placeAll(model.getMap());
-		model.getPaper().save();
+		controller.onSave();
 		
 	}
 
