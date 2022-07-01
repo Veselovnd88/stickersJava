@@ -2,13 +2,7 @@ package view;
 
 import command.Operation;
 
-public class GuiView extends View{
-	
-	
-	
-	
-	
-	
+public class GuiView implements View{
 	
 	
 
