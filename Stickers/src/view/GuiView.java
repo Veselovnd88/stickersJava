@@ -21,7 +21,7 @@ public class GuiView implements View{
 	@Override
 	public Integer readArt() {
 		// TODO Auto-generated method stub
-		return null;
+		return 500;
 	}
 
 	@Override

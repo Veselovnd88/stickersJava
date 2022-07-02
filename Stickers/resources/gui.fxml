@@ -121,7 +121,7 @@
             </RadioButton>
             <TextField layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
             <TextArea layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Здесь отображается ифнормация" />
-            <Button layoutX="20.0" layoutY="104.0" mnemonicParsing="false" text="Разместить" />
+            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" text="Разместить" />
             <Button layoutX="139.0" layoutY="104.0" mnemonicParsing="false" text="Сохранить" />
             <ChoiceBox accessibleText="1" cache="true" layoutX="262.0" layoutY="104.0" prefWidth="150.0" />
       </children>
