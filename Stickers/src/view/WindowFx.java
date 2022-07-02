@@ -30,19 +30,17 @@ public class WindowFx extends Application {
 
 	@Override
 	public void start(final Stage stage) throws Exception {
-		FXMLLoader loader=null;
-		try {
+			FXMLLoader loader = new FXMLLoader();
+			URL url = getClass().getClassLoader().getResource("gui.fxml");
+			System.out.println(url);
+			loader = new FXMLLoader(url);
+			loader.setLocation(url);
 			
-			File file = new File("resources/EAC.png");///Stickers/resources
-			System.out.println(file.isFile());
-			loader = new FXMLLoader(getClass().getResource("resources/guiFX.fxml"));
-		} catch (Exception e) {
 			
-			e.printStackTrace();
-		}
+
 		///Stickers/resources/guiFx.fxml
 		
-		AnchorPane root = loader.load();
+		Pane root = (Pane) loader.load();
 		
 		stage.setScene(new Scene(root));
 		stage.show();
