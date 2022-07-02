@@ -94,7 +94,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Label contentDisplay="CENTER" layoutX="32.0" layoutY="20.0" text="Выберите номенклатуру из списка и нажмите Разместить" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="32.0" layoutY="20.0" text="Выберите номенклатуру из списка и нажмите Разместить" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>

@@ -4,6 +4,7 @@ package view;
 import java.io.File;
 import java.net.URL;
 
+import controller.FXContoller;
 /*VM arguments
  * --module-path C:\Users\VeselovND\Downloads\openjfx-18.0.1_windows-x64_bin-sdk\javafx-sdk-18.0.1\lib --add-modules=javafx.controls
  * */
@@ -35,7 +36,7 @@ public class WindowFx extends Application {
 			System.out.println(url);
 			loader = new FXMLLoader(url);
 			loader.setLocation(url);
-			
+			loader.setContoller(new FXContoller());
 			
 
 		///Stickers/resources/guiFx.fxml
