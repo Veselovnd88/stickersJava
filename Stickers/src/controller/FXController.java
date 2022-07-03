@@ -25,10 +25,10 @@ public class FXController {
 	private Controller controller;
 	
 	public FXController() {
-		this.controller = new Controller();
+		this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
 		View guiview = new GuiView();
 		Model model = new MainModel();
-		controller.setView(guiview);
+		controller.setView(guiview);//вот это вью должно как то получать значения из FX
 		controller.setModel(model);
 		
 		CommandExecutor.init(controller);
@@ -42,6 +42,12 @@ public class FXController {
 	
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {
+		int art = chosenRadiobutton;//FIXME
+		controller.onSetArt(art);
+		int pos = chosenPos;//FIXME
+		controller.onSetPos(pos);
+		
+
 		CommandExecutor.execute(Operation.CHOOSE);
 	}
 	

@@ -37,13 +37,22 @@ public class Controller {//контроллер должен управлять 
 		}
 	}
 	
-	public Model getModel() {//FIXME interface Model
+	public Model getModel() {
 		return model;
 	}
 	
 	public int onReadArt() {
-		return view.readArt();
+		
+		
+		return view.readArt();//тут должен быть некий хелпер, который читает из источника значения
+		
+		
+		
 	}
+	
+	
+	
+	
 	
 	public boolean onYesOrNo() {
 		return view.YesOrNo();
@@ -60,6 +69,24 @@ public class Controller {//контроллер должен управлять 
 	public void onSave() throws InterruptOperationException {
 		model.save();
 	}
+	
+	public void onSetArt(int art) {
+		model.setArt(art);
+	}
+	
+	public void onSetPos(int pos) {
+		model.setPos(pos);
+	}
+	public int onGetPos() {
+		return model.getPos();
+	}
+	public int onGetArt() {
+		return model.getArt();
+	}
+	
+	
+	
+	
 	
 	
 

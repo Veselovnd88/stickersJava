@@ -7,7 +7,8 @@ import java.util.TreeMap;
 import exception.InterruptOperationException;
 
 public class MainModel implements Model {
-	
+	private int pos;
+	private int art;
 	
 	
 	private Map<Integer,Label> posLabels = new TreeMap<>();
@@ -34,6 +35,22 @@ public class MainModel implements Model {
 		paper.placeAll(posLabels);
 		paper.save();
 		
+	}
+	@Override
+	public int getPos() {
+		return pos;
+	}
+	@Override
+	public void setPos(int pos) {
+		this.pos = pos;
+	}
+	@Override
+	public int getArt() {
+		return art;
+	}
+	@Override
+	public void setArt(int art) {
+		this.art = art;
 	}
 
 	

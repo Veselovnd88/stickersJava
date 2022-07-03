@@ -15,12 +15,12 @@ public class ChooseArt implements Command {
 	@Override
 	public  void execute() {
 
-		int art = controller.onReadArt();		
-		int pos = controller.onReadPos();
+		int art = controller.onGetArt();
+		int pos = controller.onGetPos();
 		Map<Integer, Label> map = controller.getModel().getMap();
 		while(true) {
 		if(map.containsKey(pos)){
-			System.out.println("Эта позиция занята "+map.get(pos).getName()+" "+
+			System.out.println("Эта позиция занята "+map.get(pos).getName()+" "+//output to chosen source
 					map.get(pos).getSerial()+"\nПерезаписать?"
 			);
 			if(controller.onYesOrNo()) {
@@ -31,7 +31,7 @@ public class ChooseArt implements Command {
 			} else { break;}
 		}
 
-		System.out.println("Введите серийный номер");
+		System.out.println("Введите серийный номер");//FIXME output to chosen source
 		String serial = controller.onReadSerial();
 		String name="";
 		String range="";
