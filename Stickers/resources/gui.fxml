@@ -42,13 +42,14 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar fx:id="menubar" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -99,31 +100,34 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <RadioButton layoutX="20.0" layoutY="70.0" mnemonicParsing="false" text="20.11 1 MPa">
+            <RadioButton fx:id="rb_1mpa" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" text="20.11 1 MPa">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rb_06mpa" layoutX="170.0" layoutY="70.0" mnemonicParsing="false" text="20.11 0.6 MPa" toggleGroup="$group1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="170.0" layoutY="70.0" mnemonicParsing="false" text="20.11 0.6 MPa">
+            <RadioButton fx:id="rb_10bar" layoutX="320.0" layoutY="70.0" mnemonicParsing="false" text="20.11 10 bar" toggleGroup="$group1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="320.0" layoutY="70.0" mnemonicParsing="false" text="20.11 10 bar">
+            <RadioButton fx:id="rb_6bar" layoutX="470.0" layoutY="70.0" mnemonicParsing="false" text="20.11 6 bar" toggleGroup="$group1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="470.0" layoutY="70.0" mnemonicParsing="false" text="20.11 6 bar">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </RadioButton>
-            <TextField layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
-            <TextArea layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Здесь отображается ифнормация" />
-            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" text="Разместить" />
-            <Button layoutX="139.0" layoutY="104.0" mnemonicParsing="false" text="Сохранить" />
-            <ChoiceBox accessibleText="1" cache="true" layoutX="262.0" layoutY="104.0" prefWidth="150.0" />
+            <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
+            <TextArea fx:id="text_area" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Здесь отображается ифнормация" />
+            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
+            <Button fx:id="saveButton" layoutX="139.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
+            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="262.0" layoutY="104.0" prefWidth="150.0" />
       </children>
     </AnchorPane>
   </children>
