@@ -1,14 +1,16 @@
 package command;
 
 import controller.Controller;
+import controller.ControllerInt;
+import controller.FXController;
 import exception.InterruptOperationException;
 
 public class Save implements Command {
-	private Controller controller;
+	private ControllerInt controller;
 
 	
-	public Save(Controller controller) {
-		this.controller = controller;
+	public Save(ControllerInt fxController) {
+		this.controller = fxController;
 		}
 	@Override
 	public void execute() throws InterruptOperationException {

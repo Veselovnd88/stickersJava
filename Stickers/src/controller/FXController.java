@@ -52,15 +52,15 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	@FXML
 	private ToggleGroup group1;
 
-	private Controller controller;
+	private ControllerInt controller;
 	
 	public FXController() {
-		this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
+		//this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
 		this.view = new GuiView();
 		this.model = new MainModel();
 
 		
-		CommandExecutor.init(controller);
+		CommandExecutor.init(this);
 		
 	}
 	public void init() {
@@ -78,8 +78,26 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();
+		String rbText = selection.getText();
+		int art;
+		switch(rbText) {
+			case "20.11 1 MPa":
+				art = 1;
+				break;
+			case "20.11 0.6 MPa":
+				art = 2;
+				break;
+			case "20.11 10 bar":
+				art = 3;
+				break;
+			case "20.11 6 bar":
+				art = 4;
+				break;
+			default:art = 1;
+			}
+			
 		System.out.println(selection.getText());
-		int art =1; //1chosenRadiobutton;//FIXME
+		
 		onSetArt(art);
 		int pos = 1;//chosenPos;//FIXME
 		onSetPos(pos);
@@ -91,6 +109,10 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	@Override
 	public void onSetArt(int art) {
 		model.setArt(art);
+	}
+	@Override
+	public int onGetArt() {
+		return model.getArt();
 	}
 	@Override
 	public void onSetPos(int pos) {
@@ -107,9 +129,28 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
 				8,9,10,11,12);
 		pos_btn.setItems(positions);
-
+				
 		
+	}
+	@Override
+	public int onGetPos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public Model getModel() {
 		
+		return this.model;
+	}
+	@Override
+	public boolean onYesOrNo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public String onReadSerial() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

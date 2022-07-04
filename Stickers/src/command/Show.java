@@ -3,12 +3,14 @@ package command;
 import java.util.Map;
 
 import controller.Controller;
+import controller.ControllerInt;
+import controller.FXController;
 import model.Label;
 
 public class Show implements Command {
-	private Controller controller;
-	public Show(Controller controller) {
-		this.controller = controller;
+	private ControllerInt controller;
+	public Show(ControllerInt fxController) {
+		this.controller = fxController;
 	}
 	@Override
 	public void execute() {

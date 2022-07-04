@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import controller.Controller;
+import controller.ControllerInt;
+import controller.FXController;
 import exception.InterruptOperationException;
 
 public class CommandExecutor {
@@ -16,7 +18,7 @@ public class CommandExecutor {
 	}
 	
 	
-	public static void init(Controller controller) {
+	public static void init(ControllerInt controller) {
 		allCommands.put(Operation.CHOOSE, new ChooseArt(controller));
 		allCommands.put(Operation.SHOW, new Show(controller));
 		allCommands.put(Operation.SAVE, new Save(controller));

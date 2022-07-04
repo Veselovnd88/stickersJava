@@ -3,13 +3,15 @@ package command;
 import java.util.Map;
 
 import controller.Controller;
+import controller.ControllerInt;
+import controller.FXController;
 import model.Label;
 import model.LabelFactory;
 
 public class ChooseArt implements Command {
-	private Controller controller;
-	public ChooseArt(Controller controller) {
-		this.controller = controller;
+	private ControllerInt controller;
+	public ChooseArt(ControllerInt fxController) {
+		this.controller = fxController;
 	}
 
 	@Override
@@ -27,7 +29,7 @@ public class ChooseArt implements Command {
 				break;
 			}
 			
-			pos = controller.onReadPos();
+			pos = controller.onGetPos();
 			} else { break;}
 		}
 

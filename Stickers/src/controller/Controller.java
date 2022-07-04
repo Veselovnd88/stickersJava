@@ -8,7 +8,7 @@ import exception.InterruptOperationException;
 import model.Model;
 import view.View;
 
-public class Controller {//контроллер должен управлять view - выдавать на отображение данные, получать данные из модели, изменять данные в модели и так далее
+public class Controller implements ControllerInt {//контроллер должен управлять view - выдавать на отображение данные, получать данные из модели, изменять данные в модели и так далее
 	private Model model;
 	private View view;
 	

@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -88,19 +89,14 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="374.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="400.0" minWidth="500.0" prefHeight="374.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="32.0" layoutY="20.0" text="Выберите номенклатуру из списка и нажмите Разместить" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rb_1mpa" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" text="20.11 1 MPa">
+            <RadioButton fx:id="rb_1mpa" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" selected="true" text="20.11 1 MPa">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -124,10 +120,14 @@
                </font>
             </RadioButton>
             <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
-            <TextArea fx:id="text_area" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Здесь отображается ифнормация" />
+            <TextArea fx:id="text_area" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Информация" />
             <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
             <Button fx:id="saveButton" layoutX="139.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
-            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="262.0" layoutY="104.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="355.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></ChoiceBox>
+            <Label layoutX="290.0" layoutY="108.0" text="Позиция" />
       </children>
     </AnchorPane>
   </children>
