@@ -17,13 +17,17 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import model.MainModel;
 import model.Model;
 import view.ConsoleView;
 import view.GuiView;
 import view.View;
 
-public class FXController{ // implements Initializable {
+public class FXController implements ControllerInt{ // implements Initializable {
+	
+	private Model model;
+	private View view;
 	
 	@FXML
 	private Label mainLbl;
@@ -45,19 +49,16 @@ public class FXController{ // implements Initializable {
 	private RadioButton rb_10bar;
 	@FXML
 	private RadioButton rb_6bar;
-	
-	
-	
-	
-	
+	@FXML
+	private ToggleGroup group1;
+
 	private Controller controller;
 	
 	public FXController() {
 		this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
-		View guiview = new GuiView();
-		Model model = new MainModel();
-		controller.setView(guiview);//вот это вью должно как то получать значения из FX
-		controller.setModel(model);
+		this.view = new GuiView();
+		this.model = new MainModel();
+
 		
 		CommandExecutor.init(controller);
 		
@@ -70,28 +71,51 @@ public class FXController{ // implements Initializable {
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
 		
-		controller.onSave();
+		onSave();
 	}
 	
 	
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {
+		RadioButton selection = (RadioButton) group1.getSelectedToggle();
+		System.out.println(selection.getText());
 		int art =1; //1chosenRadiobutton;//FIXME
-		controller.onSetArt(art);
+		onSetArt(art);
 		int pos = 1;//chosenPos;//FIXME
-		controller.onSetPos(pos);
+		onSetPos(pos);
 		
 
 		CommandExecutor.execute(Operation.CHOOSE);
 	}
+	
+	@Override
+	public void onSetArt(int art) {
+		model.setArt(art);
+	}
+	@Override
+	public void onSetPos(int pos) {
+		model.setPos(pos);
+	}
+	@Override
+	public void onSave() throws InterruptOperationException {
+		model.save();
+	}
+	
+	
 	@FXML
 	public void initialize() {
 		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
 				8,9,10,11,12);
 		pos_btn.setItems(positions);
-	
+
+		
 		
 	}
+
+	
+	
+	
+	
 	
 	
 	
