@@ -88,6 +88,11 @@ public class Controller implements ControllerInt {//контроллер дол�
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean checkForRewriting() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	

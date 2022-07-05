@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Map;
 import java.util.Optional;
 
 import command.CommandExecutor;
@@ -26,7 +27,7 @@ import view.View;
 public class FXController implements ControllerInt{ // implements Initializable {
 	
 	private Model model;
-	private View view;
+	private View<TextArea> view;
 	
 	@FXML
 	private Label mainLbl;
@@ -62,18 +63,16 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		CommandExecutor.init(this);
 		
 	}
-	public void init() {
-		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
-				8,9,10,11,12);
-		pos_btn.setItems(positions);
-	}
+
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
 		
 		onSave();
 	}
 	
-	
+	@FXML void onMouseShowClick() {
+		//onShow();
+	}
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();
@@ -119,7 +118,7 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	}
 	
 	public void sendMessage(String message) {
-		text_area.setText(message);
+		view.sendMessage(text_area, message);
 	}
 	
 	@Override
@@ -173,6 +172,24 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	public String onReadSerial() {
 
 		return serial_area.getText();
+	}
+	/*происходит проверка если на позиции уже есть элемент - и диалог - перезаписывать или нет*/
+	@Override
+	public boolean checkForRewriting() {
+		int pos = onGetPos();
+		Map<Integer, model.Label> map = this.getModel().getMap();
+		
+		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
+			
+			String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
+					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());
+			
+			this.sendMessage(message_execute);
+			if(!this.onYesOrNo()) {
+				this.sendMessage("Позиция не записана");
+				return false;}
+			}
+		return true;
 	}
 
 	

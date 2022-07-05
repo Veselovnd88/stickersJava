@@ -1,9 +1,16 @@
 package view;
 
 import command.Operation;
+import javafx.scene.control.TextArea;
 
-public class GuiView implements View{
+public class  GuiView implements View<TextArea>{
 	private int art;
+	
+	public void sendMessage(TextArea source, String message) {
+		source.setText(message);
+	}
+	
+	
 	public int getArt() {
 		return art;
 	}
