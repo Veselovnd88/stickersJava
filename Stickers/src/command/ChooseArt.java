@@ -20,20 +20,23 @@ public class ChooseArt implements Command {
 		int art = controller.onGetArt();
 		int pos = controller.onGetPos();
 		Map<Integer, Label> map = controller.getModel().getMap();
-		while(true) {
-		if(map.containsKey(pos)){
-			System.out.println("Эта позиция занята "+map.get(pos).getName()+" "+//output to chosen source
-					map.get(pos).getSerial()+"\nПерезаписать?"
-			);
-			if(controller.onYesOrNo()) {
-				break;
-			}
-			
-			pos = controller.onGetPos();
-			} else { break;}
-		}
 
-		System.out.println("Введите серийный номер");//FIXME output to chosen source
+		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
+			
+			String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
+					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());
+			
+			controller.sendMessage(message_execute);
+			//System.out.println("Эта позиция занята "+map.get(pos).getName()+" "+//output to chosen source
+				//	map.get(pos).getSerial()+"\nПерезаписать?"
+			//);
+			if(!controller.onYesOrNo()) {
+				return;}
+			}
+
+	
+
+		//System.out.println("Введите серийный номер");//FIXME output to chosen source
 		String serial = controller.onReadSerial();
 		String name="";
 		String range="";
@@ -60,7 +63,9 @@ public class ChooseArt implements Command {
 		}
 
 			Label lab = LabelFactory.getLabel(name,range,pinout,serial);
-			controller.getModel().getMap().put(pos, lab);		
+			controller.getModel().getMap().put(pos, lab);	
+			controller.sendMessage(String.format("Размещена позиция %s %s"//output to chosen source
+					,map.get(pos).getName(), map.get(pos).getSerial()));
 	}
 
 }

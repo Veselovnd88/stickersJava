@@ -83,6 +83,11 @@ public class Controller implements ControllerInt {//контроллер дол�
 	public int onGetArt() {
 		return model.getArt();
 	}
+	@Override
+	public void sendMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

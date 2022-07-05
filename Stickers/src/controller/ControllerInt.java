@@ -12,5 +12,6 @@ public interface ControllerInt {
 	Model getModel();
 	boolean onYesOrNo();
 	String onReadSerial();
+	void sendMessage(String message);
 	
 }

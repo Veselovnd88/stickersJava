@@ -1,7 +1,6 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 import command.CommandExecutor;
 import command.Operation;
@@ -9,18 +8,18 @@ import exception.InterruptOperationException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import model.MainModel;
 import model.Model;
-import view.ConsoleView;
 import view.GuiView;
 import view.View;
 
@@ -95,14 +94,10 @@ public class FXController implements ControllerInt{ // implements Initializable 
 				break;
 			default:art = 1;
 			}
-			
-		System.out.println(selection.getText());
 		
-		onSetArt(art);
-		int pos = 1;//chosenPos;//FIXME
+		onSetArt(art);				
+		int pos = pos_btn.getValue();
 		onSetPos(pos);
-		
-
 		CommandExecutor.execute(Operation.CHOOSE);
 	}
 	
@@ -119,6 +114,15 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		model.setPos(pos);
 	}
 	@Override
+	public int onGetPos() {
+		return model.getPos();
+	}
+	
+	public void sendMessage(String message) {
+		text_area.setText(message);
+	}
+	
+	@Override
 	public void onSave() throws InterruptOperationException {
 		model.save();
 	}
@@ -129,14 +133,12 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
 				8,9,10,11,12);
 		pos_btn.setItems(positions);
-				
+		pos_btn.setValue(1);
+		text_area.setPrefRowCount(14);
+		text_area.setText("1 \n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n 10\n 11\n 12\n");
 		
 	}
-	@Override
-	public int onGetPos() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 	@Override
 	public Model getModel() {
 		
@@ -144,13 +146,33 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	}
 	@Override
 	public boolean onYesOrNo() {
-		// TODO Auto-generated method stub
-		return false;
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Перезаписать?");
+		alert.setHeaderText("Перезаписать позицию");
+		alert.getButtonTypes().clear();
+		ButtonType yes = new ButtonType("Да");
+		ButtonType no = new ButtonType("Нет");
+		
+		alert.getButtonTypes().addAll(yes, no);
+	      Optional<ButtonType> option = alert.showAndWait();
+
+	      if (option.get() == null) {
+	    	  this.sendMessage("Перезапись не выполнена");
+	        return false;
+	      } else if (option.get() == yes) {
+	    	  	         return true;
+	      } else if (option.get() == no) {
+	         return false;
+	      } else {
+	         return false;
+	      }
 	}
+	
+	
 	@Override
 	public String onReadSerial() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return serial_area.getText();
 	}
 
 	
