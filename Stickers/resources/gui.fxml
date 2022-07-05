@@ -60,7 +60,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="400.0" minWidth="500.0" prefHeight="374.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="32.0" layoutY="20.0" text="Выберите номенклатуру из списка и нажмите Разместить" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="26.0" layoutY="20.0" prefHeight="20.0" prefWidth="594.0" text="Выберите номенклатуру и позицию стикера и нажмите Разместить" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
@@ -98,6 +98,7 @@
                </opaqueInsets></ChoiceBox>
             <Label layoutX="324.0" layoutY="108.0" text="Позиция" />
             <Button fx:id="sho_btn" layoutX="127.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="87.0" text="Показать" />
+            <Button fx:id="folder_btn" layoutX="493.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" text="Открыть папку" />
       </children>
     </AnchorPane>
   </children>

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -28,9 +29,10 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	
 	private Model model;
 	private View<TextArea> view;
-	
 	@FXML
 	private Label mainLbl;
+	@FXML
+	private Button folder_btn;
 	@FXML
 	private Button placeButton;
 	@FXML 
@@ -66,13 +68,22 @@ public class FXController implements ControllerInt{ // implements Initializable 
 
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
+		CommandExecutor.execute(Operation.SAVE);
 		
-		onSave();
 	}
 	
-	@FXML void onMouseShowClick() {
-		//onShow();
+	@FXML
+	private void onMouseShowClick() throws InterruptOperationException {
+		CommandExecutor.execute(Operation.SHOW);
 	}
+	
+	@FXML
+	private void onOpenFolderClick() throws IOException {
+		//	Desktop.getDesktop().open(new File("c:\\StickersADZ"));
+		this.sendMessage("Файл для печати находится тут c:\\StickersADZ");
+		
+	}
+	
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();
@@ -101,31 +112,38 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	}
 	
 	@Override
-	public void onSetArt(int art) {
+	public void onSetArt(int art) {//устанавливает значение артикула от пользователя
 		model.setArt(art);
 	}
+	
 	@Override
-	public int onGetArt() {
+	public int onGetArt() {//забирает артикул из модели - для размещения
 		return model.getArt();
 	}
+	
 	@Override
-	public void onSetPos(int pos) {
+	public void onSetPos(int pos) {//устанавливает позицию для размещения
 		model.setPos(pos);
 	}
+	
 	@Override
-	public int onGetPos() {
+	public int onGetPos() {//забирает позицию
 		return model.getPos();
 	}
-	
-	public void sendMessage(String message) {
+	@Override
+	public void sendMessage(String message) {//этот метод отправлять сообщение в вью
 		view.sendMessage(text_area, message);
 	}
 	
 	@Override
 	public void onSave() throws InterruptOperationException {
+		if(model.getMap().isEmpty()) {
+			this.sendMessage("Список для печати пустой, печатать нечего");
+			return;
+		}//проверка на пустую мапу, если ничего не добавлено
 		model.save();
+		sendMessage("Файл сохранен в директорию c:\\StickersADZ");
 	}
-	
 	
 	@FXML
 	public void initialize() {
@@ -134,19 +152,20 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		pos_btn.setItems(positions);
 		pos_btn.setValue(1);
 		text_area.setPrefRowCount(14);
-		text_area.setText("1 \n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n 10\n 11\n 12\n");
+		//text_area.setText("1 \n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n 10\n 11\n 12\n");
 		
 	}
 
 	@Override
 	public Model getModel() {
 		
-		return this.model;
+		return this.model;//FIXME есть вопросы наверное с моделью только тут должны быть манипуляции
 	}
+	
 	@Override
 	public boolean onYesOrNo() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Перезаписать?");
+		Alert alert = new Alert(AlertType.CONFIRMATION);//окошко с выбором
+		alert.setTitle("Позиция которую вы хотите добавить уже существует");
 		alert.setHeaderText("Перезаписать позицию");
 		alert.getButtonTypes().clear();
 		ButtonType yes = new ButtonType("Да");
@@ -156,7 +175,7 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	      Optional<ButtonType> option = alert.showAndWait();
 
 	      if (option.get() == null) {
-	    	  this.sendMessage("Перезапись не выполнена");
+	    	  this.sendMessage("Ничего не выбрано, позиция не перезаписалась");
 	        return false;
 	      } else if (option.get() == yes) {
 	    	  	         return true;
@@ -167,13 +186,12 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	      }
 	}
 	
-	
 	@Override
 	public String onReadSerial() {
-
 		return serial_area.getText();
 	}
 	/*происходит проверка если на позиции уже есть элемент - и диалог - перезаписывать или нет*/
+	
 	@Override
 	public boolean checkForRewriting() {
 		int pos = onGetPos();
@@ -191,15 +209,4 @@ public class FXController implements ControllerInt{ // implements Initializable 
 			}
 		return true;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

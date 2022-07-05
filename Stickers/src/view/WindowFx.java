@@ -22,7 +22,7 @@ public class WindowFx extends Application {
 	public void start(final Stage stage) throws Exception {
 			FXMLLoader loader = new FXMLLoader();
 			URL url = getClass().getClassLoader().getResource("gui.fxml");
-			System.out.println(url);
+			//System.out.println(url);
 			loader = new FXMLLoader(url);
 			
 			loader.setLocation(url);

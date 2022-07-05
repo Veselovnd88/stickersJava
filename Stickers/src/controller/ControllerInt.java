@@ -14,5 +14,4 @@ public interface ControllerInt {
 	String onReadSerial();
 	void sendMessage(String message);
 	boolean checkForRewriting(); //метод проверяет есть ли в мапе эта позиция или нет и перезаписывает
-	
 }

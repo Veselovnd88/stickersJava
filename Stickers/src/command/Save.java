@@ -1,8 +1,6 @@
 package command;
 
-import controller.Controller;
 import controller.ControllerInt;
-import controller.FXController;
 import exception.InterruptOperationException;
 
 public class Save implements Command {
