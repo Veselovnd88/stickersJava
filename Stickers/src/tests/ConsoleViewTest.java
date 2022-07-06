@@ -53,7 +53,7 @@ public class ConsoleViewTest {
 	}
 	
 	
-	
+/*	
 	@Test
 	public void testReadOp() {
 		String testingString = "\n1\n2\n3\n4\nfail\0\n5\n1";
@@ -91,7 +91,7 @@ public class ConsoleViewTest {
 		assertEquals((Integer)5,cv.readPos());
 		assertEquals((Integer)1,cv.readPos());
 	}
-
+*/
 	@Test
 	public void testReadSerial() {
 		String testingString = "123\n321\n\n567\nHello\nfail\n";

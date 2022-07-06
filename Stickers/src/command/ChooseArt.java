@@ -3,6 +3,7 @@ package command;
 import java.util.Map;
 
 import controller.ControllerInt;
+import exception.InterruptOperationException;
 import model.Label;
 import model.LabelFactory;
 
@@ -13,7 +14,7 @@ public class ChooseArt implements Command {
 	}
 
 	@Override
-	public  void execute() {
+	public  void execute() throws InterruptOperationException {
 
 		int art = controller.onGetArt();
 		int pos = controller.onGetPos();

@@ -30,10 +30,7 @@ public class MainModel implements Model {
 	@Override
 	public void save() throws InterruptOperationException {
 		
-	/*	if(posLabels.isEmpty()) {
-			System.out.println("Список для печати пустой");
-			return;
-		}*///проверка уходит в контроллер
+
 		paper.placeAll(posLabels);
 		paper.save();
 		

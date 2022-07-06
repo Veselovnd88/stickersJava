@@ -5,13 +5,13 @@ import model.Model;
 
 public interface ControllerInt {
 
-	int onGetArt();
+	int onGetArt() throws InterruptOperationException;
 
 	void onSave() throws InterruptOperationException;
-	int onGetPos();
+	int onGetPos() throws InterruptOperationException;
 	Model getModel();
 	boolean onYesOrNo();
-	String onReadSerial();
+	String onReadSerial() throws InterruptOperationException;
 	void sendMessage(String message);
 	boolean checkForRewriting(); //метод проверяет есть ли в мапе эта позиция или нет и перезаписывает
 }

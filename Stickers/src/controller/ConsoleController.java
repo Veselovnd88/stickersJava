@@ -49,7 +49,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 							+ " 2 - Показать список того что печатаем, "
 							+ "3 - Сохранить в файл "+
 							"4 - Выйти";
-			System.out.println(messageOp);
+			this.sendMessage(messageOp);
 			while(true) {
 					try {
 						Integer i = Integer.parseInt(br.readLine().trim());
@@ -86,10 +86,20 @@ public class ConsoleController implements ControllerInt {//контроллер 
 	}
 		
 	public int onReadPos() {
-		return view.readPos();
+		return -1;
 	}
-	public String onReadSerial() {
-		return view.readSerial();
+	public String onReadSerial() throws InterruptOperationException {
+		String serial="";
+		while(true) {
+		try {
+			serial = br.readLine();
+			break;
+			
+		} catch (IOException e) {
+			throw new InterruptOperationException();
+		}
+		} return serial;
+
 	}
 	
 	public void onSave() throws InterruptOperationException {
@@ -103,12 +113,65 @@ public class ConsoleController implements ControllerInt {//контроллер 
 	public void onSetPos(int pos) {
 		model.setPos(pos);
 	}
-	public int onGetPos() {
-		return model.getPos();
-	}
+	
+	public int onGetPos() throws InterruptOperationException {
+		int pos = -1;
+		String messagePos = 
+				"Выберите позицию для этикетки \n"+
+				"1  2  3  4  \n5  6  7  8\n9  10 11 12";
+		sendMessage(messagePos);
+		while(true) {
+		try {
+			Integer i = Integer.parseInt(br.readLine().trim());
+			if(i>0&&i<13) {
+				pos = i;
+				break;
+				}
+			else {
+				sendMessage("Введите позицию этикетки от 1 до 12");
+			}
+			} catch (IOException e) {
+					throw new InterruptOperationException();
+				}
+			  catch(NumberFormatException nfe) {
+					sendMessage("Введено не число");
+					sendMessage(messagePos);
+				}
+		} return pos;
+		
+}
+	
 	public int onGetArt() {
-		return model.getArt();
-	}
+		Integer art = -1;
+				String messageArt = 
+					"Выберите артикул\n"+
+					"1- 20.11 1 MPa \n" +
+							"2- 20.11 10 bar \n"+
+							"3 - 20.11 6 bar\n"+
+							"4 -20.11 0.6 Mpa";
+			sendMessage(messageArt);
+			while(true){
+					try {
+						Integer i = Integer.parseInt(br.readLine().trim());
+						if(i>0&&i<5) {
+							art = i;
+							break;
+						}
+						else {
+							sendMessage("Выберите из списка от 1 до 4\n"+messageArt);
+						}				
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			  catch(NumberFormatException nfi) {
+				sendMessage("Введено не число\n"+messageArt);
+				continue;
+					}
+			}		
+		
+		return art;
+}
 	
 	@Override
 	public void sendMessage(String message) {
@@ -117,7 +180,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 	}
 	@Override
 	public boolean checkForRewriting() {
-		// TODO Auto-generated method stub
+		// скопировать сюда из гитхаба или старой ветки
 		return false;
 	}
 	

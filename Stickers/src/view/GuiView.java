@@ -52,22 +52,11 @@ public class GuiView implements View<TextArea>{
 	}
 
 	@Override
-	public Integer readOp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Integer readArt() {
 		
 		return getArt();
 	}
 
-	@Override
-	public Integer readPos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String readSerial() {

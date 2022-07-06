@@ -185,20 +185,7 @@ public class FXController implements ControllerInt{
 	
 	@Override
 	public void onSave() throws InterruptOperationException {
-		String os = System.getProperty("os.name").toLowerCase();
-		
-		
-		
-		if(model.getMap().isEmpty()) {
-			this.sendMessage("Список для печати пустой, печатать нечего");
-			return;
-		}//проверка на пустую мапу, если ничего не добавлено
-		if(os.startsWith("windows")){
-			model.save();
-		sendMessage("Файл сохранен в директорию c:\\StickersADZ");}
-		else {
-			sendMessage("Для "+ System.getProperty("os.name")+" не реализовано");
-		}		
+		CommandExecutor.execute(Operation.SAVE);		
 	}
 	
 	@FXML
