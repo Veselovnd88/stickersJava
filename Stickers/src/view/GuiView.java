@@ -75,11 +75,7 @@ public class GuiView implements View<TextArea>{
 		return null;
 	}
 
-	@Override
-	public Operation askOperation() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public void sendMessage(TextArea source, String message) {

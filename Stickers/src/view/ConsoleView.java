@@ -113,9 +113,5 @@ public class ConsoleView implements View<PrintStream> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public Operation askOperation() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

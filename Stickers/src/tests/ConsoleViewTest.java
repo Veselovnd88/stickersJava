@@ -105,17 +105,6 @@ public class ConsoleViewTest {
 		assertEquals("fail",cv.readSerial());
 	}
 
-	@Test
-	public void testAskOperation() {
-		String testingString = "1\n2\n3\n4\n5\n0\n1";
-		bis = new ByteArrayInputStream(testingString.getBytes());
-		System.setIn(bis);
-		ConsoleView cv = new ConsoleView();
-		assertEquals(Operation.CHOOSE, cv.askOperation());
-		assertEquals(Operation.SHOW, cv.askOperation());
-		assertEquals(Operation.SAVE, cv.askOperation());
-		assertEquals(Operation.EXIT, cv.askOperation());
-		
-	}
+
 
 }

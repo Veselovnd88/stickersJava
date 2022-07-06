@@ -7,7 +7,6 @@ public interface View <T>{
 	Integer readOp();
 	Integer readPos();
 	String readSerial();
-	Operation askOperation();
 	Integer readArt();
 	void sendMessage(T source, String message);
 
