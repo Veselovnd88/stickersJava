@@ -103,8 +103,7 @@ public class FXController implements ControllerInt{
 			alert.setHeaderText("Удалить позицию "+pos);
 			alert.getButtonTypes().clear();
 			ButtonType yes = new ButtonType("Да");
-			ButtonType no = new ButtonType("Нет");
-			
+			ButtonType no = new ButtonType("Нет");			
 			alert.getButtonTypes().addAll(yes, no);
 		      Optional<ButtonType> option = alert.showAndWait();
 
@@ -120,7 +119,8 @@ public class FXController implements ControllerInt{
 	}
 	@FXML
 	private void onClickHelpConsole() {
-		//TODO
+		//ControllerInt console = new ConsoleController();
+		//TODO должно быть в отдельном потоке, а так всё работает
 	}
 	
 	@FXML
@@ -132,14 +132,7 @@ public class FXController implements ControllerInt{
 				+ "Обратная связь: veselovnd@gmail.com");
 		alert.show();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {//размещает этикетки на файле
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();

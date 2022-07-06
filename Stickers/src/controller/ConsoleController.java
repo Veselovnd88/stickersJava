@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.Map;
 
 import command.CommandExecutor;
 import command.Operation;
@@ -78,17 +79,34 @@ public class ConsoleController implements ControllerInt {//контроллер 
 	
 	public int onReadArt() {
 		
-		return view.readArt();//		
+		return model.getArt();	
 	}
 	
-	public boolean onYesOrNo() {
-		return view.YesOrNo();
-	}
+	public boolean onYesOrNo() throws InterruptOperationException {
+		String message = "Введите y - да, n - нет";
+		sendMessage(message);
+		while(true) {
+			try {
+				String answer = br.readLine();
+				if(answer.equals("y")) {
+					return true;
+				}
+				if(answer.equals("n")) {
+					return false;
+				}
+				else {
+					sendMessage("Неправильный ввод\n"+message);
+				}
+			} catch (IOException e) {
+				throw new InterruptOperationException();
+			}}
+}
 		
 	public int onReadPos() {
 		return -1;
 	}
 	public String onReadSerial() throws InterruptOperationException {
+		sendMessage("Введите серийный номер");
 		String serial="";
 		while(true) {
 		try {
@@ -106,14 +124,9 @@ public class ConsoleController implements ControllerInt {//контроллер 
 		model.save();
 	}
 	
-	public void onSetArt(int art) {
-		model.setArt(art);
-	}
-	
-	public void onSetPos(int pos) {
-		model.setPos(pos);
-	}
-	
+	//TODO команда удалить
+	//TODO команда открыть папку
+	//
 	public int onGetPos() throws InterruptOperationException {
 		int pos = -1;
 		String messagePos = 
@@ -125,6 +138,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 			Integer i = Integer.parseInt(br.readLine().trim());
 			if(i>0&&i<13) {
 				pos = i;
+				model.setPos(pos);
 				break;
 				}
 			else {
@@ -137,10 +151,11 @@ public class ConsoleController implements ControllerInt {//контроллер 
 					sendMessage("Введено не число");
 					sendMessage(messagePos);
 				}
+		
 		} return pos;
 		
 }
-	
+	@Override
 	public int onGetArt() {
 		Integer art = -1;
 				String messageArt = 
@@ -155,6 +170,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 						Integer i = Integer.parseInt(br.readLine().trim());
 						if(i>0&&i<5) {
 							art = i;
+							model.setArt(art);
 							break;
 						}
 						else {
@@ -179,9 +195,24 @@ public class ConsoleController implements ControllerInt {//контроллер 
 		
 	}
 	@Override
-	public boolean checkForRewriting() {
-		// скопировать сюда из гитхаба или старой ветки
-		return false;
+	public boolean checkForRewriting() throws InterruptOperationException {
+		int pos = model.getPos();
+		Map<Integer, model.Label> map = this.getModel().getMap();		
+		while(true) {
+		if(map.containsKey(pos)){
+			sendMessage("Эта позиция занята "+map.get(pos).getName()+" "+
+					map.get(pos).getSerial()+"\nПерезаписать?"
+			);
+			if(!this.onYesOrNo()) {
+				this.sendMessage("Позиция не записана");
+				return false;
+			}
+			
+			pos = this.onReadPos();
+			} else { break;}
+		}
+
+		return true;
 	}
 	
 

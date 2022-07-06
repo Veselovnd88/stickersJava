@@ -14,8 +14,8 @@ public class Main {
 		//c.setView(guiview);
 		//c.setModel(model);
 		
-		//Application.launch(WindowFx.class, args);
-		ControllerInt c = new ConsoleController();
+		Application.launch(WindowFx.class, args);
+		//ControllerInt c = new ConsoleController();
 		
 		
 		

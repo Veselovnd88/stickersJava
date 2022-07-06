@@ -29,7 +29,7 @@ public class ConsoleViewTest {
 		
 	}
 
-	@Test
+/*	@Test
 	public void testYesOrNo() {
 		String testingString ="y\nfail\nfail\nn";//
 		bis = new ByteArrayInputStream(testingString.getBytes());
@@ -91,7 +91,7 @@ public class ConsoleViewTest {
 		assertEquals((Integer)5,cv.readPos());
 		assertEquals((Integer)1,cv.readPos());
 	}
-*/
+
 	@Test
 	public void testReadSerial() {
 		String testingString = "123\n321\n\n567\nHello\nfail\n";
@@ -107,4 +107,5 @@ public class ConsoleViewTest {
 
 
 
-}
+*/
+	}
