@@ -81,4 +81,10 @@ public class GuiView implements View{
 		return null;
 	}
 
+	@Override
+	public void sendMessage(Object source, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
