@@ -96,8 +96,19 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></ChoiceBox>
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <Label layoutX="324.0" layoutY="108.0" text="Позиция" />
+            <Button fx:id="sho_btn" layoutX="127.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="87.0" text="Показать" />
+            <Button fx:id="folder_btn" layoutX="493.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" text="Открыть папку" />
+=======
             <Label layoutX="290.0" layoutY="108.0" text="Позиция" />
             <Button fx:id="sho_btn" layoutX="104.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Показать" />
+>>>>>>> parent of cb4ecb6... choose - OK
+=======
+            <Label layoutX="290.0" layoutY="108.0" text="Позиция" />
+            <Button fx:id="sho_btn" layoutX="104.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Показать" />
+>>>>>>> branch 'GUIView' of https://github.com/Veselovnd88/stickersJava.git
       </children>
     </AnchorPane>
   </children>

@@ -1,8 +1,9 @@
 package view;
 
 import command.Operation;
+import javafx.scene.control.TextArea;
 
-public class GuiView implements View{
+public class GuiView implements View<TextArea>{
 	private int art;
 	public int getArt() {
 		return art;
@@ -82,7 +83,7 @@ public class GuiView implements View{
 	}
 
 	@Override
-	public void sendMessage(Object source, String message) {
+	public void sendMessage(TextArea source, String message) {
 		// TODO Auto-generated method stub
 		
 	}

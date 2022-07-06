@@ -1,5 +1,9 @@
 package controller;
 
+
+
+import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 import command.CommandExecutor;
@@ -26,8 +30,11 @@ import view.View;
 public class FXController implements ControllerInt{ // implements Initializable {
 	
 	private Model model;
-	private View view;
+
+
+	private View<TextArea> view;
 	
+
 	@FXML
 	private Label mainLbl;
 	@FXML
@@ -117,9 +124,11 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	public int onGetPos() {
 		return model.getPos();
 	}
+
+	@Override
+	public void sendMessage(String message) {//этот метод отправлять сообщение в вью
+		view.sendMessage(text_area, message);
 	
-	public void sendMessage(String message) {
-		text_area.setText(message);
 	}
 	
 	@Override
@@ -174,15 +183,10 @@ public class FXController implements ControllerInt{ // implements Initializable 
 
 		return serial_area.getText();
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	@Override
+	public boolean checkForRewriting() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
+

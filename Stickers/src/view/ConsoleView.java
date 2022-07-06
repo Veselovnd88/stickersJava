@@ -130,6 +130,7 @@ public class ConsoleView implements View<PrintStream> {
 		}
 	}
 
+
 	@Override
 	public void sendMessage(PrintStream source, String message) {
 		// TODO Auto-generated method stub
