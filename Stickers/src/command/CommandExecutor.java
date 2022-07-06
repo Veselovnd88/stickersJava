@@ -3,9 +3,8 @@ package command;
 import java.util.HashMap;
 import java.util.Map;
 
-import controller.Controller;
+
 import controller.ControllerInt;
-import controller.FXController;
 import exception.InterruptOperationException;
 
 public class CommandExecutor {

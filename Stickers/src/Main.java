@@ -1,3 +1,5 @@
+import controller.ConsoleController;
+import controller.ControllerInt;
 import javafx.application.Application;
 import view.WindowFx;
 
@@ -12,9 +14,10 @@ public class Main {
 		//c.setView(guiview);
 		//c.setModel(model);
 		
-		Application.launch(WindowFx.class, args);
+		//Application.launch(WindowFx.class, args);
+		ControllerInt c = new ConsoleController();
 		
-		//c.startConsole();
+		
 		
 		
 		

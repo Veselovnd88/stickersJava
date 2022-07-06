@@ -10,11 +10,7 @@ import command.Operation;
 public class ConsoleView implements View<PrintStream> {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-	
-	public Operation askOperation() {//запрос операции, в принципе всю функцию readOp можно перенести сюда
-		Integer i = readOp();
-		return Operation.getOpByOrdinal(i);
-	}
+
 	@Override
 	public boolean YesOrNo() {
 		String message = "Введите y - да, n - нет";
@@ -64,31 +60,7 @@ public class ConsoleView implements View<PrintStream> {
 				}
 		}
 	}
-	@Override
-	public Integer readOp() {
-		String messageOp = "Выберите операцию 1 - Выбор номенклатуры,"
-						+ " 2 - Показать список того что печатаем, "
-						+ "3 - Сохранить в файл "+
-						"4 - Выйти";
-		System.out.println(messageOp);
-		while(true) {
-				try {
-					Integer i = Integer.parseInt(br.readLine().trim());
-					if(i<5&&i>0) {
-						return i;}
-					else {
-						System.out.println("Неправильно введен номер операции");
-						System.out.println(messageOp);	
-					}
-					
-					}catch(NumberFormatException nfe) {
-						System.out.println("Введено не число");
-						System.out.println(messageOp);
-					}
-				catch (IOException e) {
-			e.printStackTrace();
-		}}
-	}
+
 	//TODO где то должна быть статическая переменная определяющая количество этикеток
 	@Override
 	public Integer readPos() {//FIXME  - можно сделать до 16 этикеток
@@ -133,7 +105,17 @@ public class ConsoleView implements View<PrintStream> {
 
 	@Override
 	public void sendMessage(PrintStream source, String message) {
-		// TODO Auto-generated method stub
+		source.println(message);
 		
+	}
+	@Override
+	public Integer readOp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Operation askOperation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

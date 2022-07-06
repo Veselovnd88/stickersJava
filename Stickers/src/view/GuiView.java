@@ -38,7 +38,6 @@ public class GuiView implements View<TextArea>{
 	}
 
 	private boolean yesNo;
-	private int op;
 	private int pos;
 	private String serial;
 	

@@ -59,7 +59,6 @@ public class FXController implements ControllerInt{
 	private ToggleGroup group1;
 
 	public FXController() {
-		//this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
 		this.view = new GuiView();//присваивается вью
 		this.model = new MainModel();//основная модель
 		CommandExecutor.init(this);
@@ -74,6 +73,7 @@ public class FXController implements ControllerInt{
 	
 	@FXML
 	private void onMouseShowClick() throws InterruptOperationException {
+		
 		CommandExecutor.execute(Operation.SHOW);//показать все
 	}
 	
@@ -91,8 +91,54 @@ public class FXController implements ControllerInt{
 	}
 	@FXML
 	private void onMouseDeleteClick() {
-		
+		Map<Integer, model.Label> map = model.getMap();
+		int pos = onGetPos();
+		if (map.isEmpty()) {
+			this.sendMessage("Еще ничего не добавлено");
+			return;
+		}
+		if(map.containsKey(pos)) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Удаление позиции");
+			alert.setHeaderText("Удалить позицию "+pos);
+			alert.getButtonTypes().clear();
+			ButtonType yes = new ButtonType("Да");
+			ButtonType no = new ButtonType("Нет");
+			
+			alert.getButtonTypes().addAll(yes, no);
+		      Optional<ButtonType> option = alert.showAndWait();
+
+		      if (option.get() == null) {
+		    	  this.sendMessage("Ничего не выбрано, позиция не удалена");
+		      } else if (option.get() == yes) {
+		    	  map.remove(pos);
+		    	  this.sendMessage(String.format("Позиция %s удалена",pos));
+		      } else if (option.get() == no) {
+		    	  this.sendMessage(String.format("Позиция %s не удалена", pos));
+		      } 
+		}
 	}
+	@FXML
+	private void onClickHelpConsole() {
+		//TODO
+	}
+	
+	@FXML
+	private void onClickHelpAbout(){
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Информация о программе");
+		alert.setHeaderText("Программа для формирования листа с этикетками\n"
+				+ "для датчиков давления\n"
+				+ "Обратная связь: veselovnd@gmail.com");
+		alert.show();
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@FXML
 	public void onMousePlaceClick() throws InterruptOperationException {//размещает этикетки на файле

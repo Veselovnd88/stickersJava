@@ -18,6 +18,10 @@ public class ChooseArt implements Command {
 		int art = controller.onGetArt();
 		int pos = controller.onGetPos();
 		Map<Integer, Label> map = controller.getModel().getMap();
+		String serial = controller.onReadSerial();
+		if(serial==null) {
+			return;
+		}
 		if(!controller.checkForRewriting())
 		{
 			return;//Проверка есть ли позиция или нет
@@ -39,10 +43,7 @@ public class ChooseArt implements Command {
 	
 
 		//System.out.println("Введите серийный номер");//FIXME output to chosen source
-		String serial = controller.onReadSerial();
-		if(serial==null) {
-			return;
-		}
+
 		String name="";
 		String range="";
 		String pinout="";

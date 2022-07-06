@@ -13,6 +13,10 @@ public class Show implements Command {
 	@Override
 	public void execute() {
 		Map<Integer, Label> map = controller.getModel().getMap();
+		if(map.isEmpty()) {
+			controller.sendMessage("Еще ничего не добавлено");
+			return;
+		}
 		StringBuilder sb = new StringBuilder("Готово к печати:\n");
 		
 		//System.out.println("Готово к печати:");

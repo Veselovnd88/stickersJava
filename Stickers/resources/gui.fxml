@@ -45,11 +45,13 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar fx:id="menubar" VBox.vgrow="NEVER">
+    <MenuBar fx:id="help_menu" VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" text="Помощь">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem fx:id="help_console" mnemonicParsing="false" onAction="#onClickHelpConsole" text="Запустить консольную версию" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickHelpAbout" text="О программе" />
+                  <MenuItem disable="true" mnemonicParsing="false" onAction="#onClickHelpAbout" text="Секретное меню" />
           </items>
         </Menu>
       </menus>
@@ -84,18 +86,18 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </RadioButton>
-            <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
+            <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" prefHeight="25.0" promptText="Серийный номер" text="1234123456" />
             <TextArea fx:id="text_area" editable="false" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Информация" />
-            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
-            <Button fx:id="saveButton" layoutX="220.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
-            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="480.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
+            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" prefWidth="100.0" text="Разместить" />
+            <Button fx:id="saveButton" layoutX="260.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" prefWidth="100.0" text="Сохранить" />
+            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="550.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></ChoiceBox>
-            <Label layoutX="420.0" layoutY="108.0" text="Позиция" />
-            <Button fx:id="sho_btn" layoutX="120.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="80.0" text="Показать" />
-            <Button fx:id="folder_btn" layoutX="183.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" prefHeight="25.0" prefWidth="111.0" text="Открыть папку" />
-            <Button fx:id="delete_btn" layoutX="320.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseDeleteClick" prefHeight="25.0" prefWidth="80.0" text="Удалить" />
+            <Label layoutX="485.0" layoutY="108.0" text="Позиция" />
+            <Button fx:id="sho_btn" layoutX="140.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefWidth="100.0" text="Показать" />
+            <Button fx:id="folder_btn" layoutX="220.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" prefHeight="25.0" prefWidth="200.0" text="Открыть папку" />
+            <Button fx:id="delete_btn" layoutX="380.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseDeleteClick" prefHeight="25.0" prefWidth="100.0" text="Удалить" />
       </children>
     </AnchorPane>
   </children>
