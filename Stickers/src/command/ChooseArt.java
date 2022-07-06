@@ -20,13 +20,10 @@ public class ChooseArt implements Command {
 		int art = controller.onGetArt();
 		int pos = controller.onGetPos();
 		Map<Integer, Label> map = controller.getModel().getMap();
-		if(!controller.checkForRewriting())
-		{
-			return;//Проверка есть ли позиция или нет
-		}
-		/*if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
-			//
-			//String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
+
+		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
+			
+			String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
 					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());
 			
 			controller.sendMessage(message_execute);
@@ -34,9 +31,8 @@ public class ChooseArt implements Command {
 				//	map.get(pos).getSerial()+"\nПерезаписать?"
 			//);
 			if(!controller.onYesOrNo()) {
-				controller.sendMessage("Позиция не записана");
 				return;}
-			}*/
+			}
 
 	
 
@@ -68,8 +64,8 @@ public class ChooseArt implements Command {
 
 			Label lab = LabelFactory.getLabel(name,range,pinout,serial);
 			controller.getModel().getMap().put(pos, lab);	
-			controller.sendMessage(String.format("Размещена позиция %s %s %s"//output to chosen source
-					,pos, map.get(pos).getName(), map.get(pos).getSerial()));
+			controller.sendMessage(String.format("Размещена позиция %s %s"//output to chosen source
+					,map.get(pos).getName(), map.get(pos).getSerial()));
 	}
 
 }

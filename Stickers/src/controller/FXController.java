@@ -1,7 +1,9 @@
 package controller;
 
+
 import java.io.IOException;
 import java.util.Map;
+
 import java.util.Optional;
 
 import command.CommandExecutor;
@@ -28,7 +30,10 @@ import view.View;
 public class FXController implements ControllerInt{ // implements Initializable {
 	
 	private Model model;
+
 	private View<TextArea> view;
+	
+
 	@FXML
 	private Label mainLbl;
 	@FXML
@@ -65,7 +70,11 @@ public class FXController implements ControllerInt{ // implements Initializable 
 		CommandExecutor.init(this);
 		
 	}
-
+	public void init() {
+		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
+				8,9,10,11,12);
+		pos_btn.setItems(positions);
+	}
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
 		CommandExecutor.execute(Operation.SAVE);
@@ -130,9 +139,12 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	public int onGetPos() {//забирает позицию
 		return model.getPos();
 	}
+
 	@Override
 	public void sendMessage(String message) {//этот метод отправлять сообщение в вью
 		view.sendMessage(text_area, message);
+	
+
 	}
 	
 	@Override

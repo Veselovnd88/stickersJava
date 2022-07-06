@@ -3,12 +3,9 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-
 import command.Operation;
 
-public class ConsoleView implements View<PrintStream> {
+public class ConsoleView implements View {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	
@@ -130,10 +127,4 @@ public class ConsoleView implements View<PrintStream> {
 		}
 		}
 	}
-	@Override
-	public void sendMessage(PrintStream source, String message) {
-		source.println(message);
-		
-	}
-
 }
