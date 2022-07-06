@@ -2,9 +2,7 @@ package command;
 
 import java.util.Map;
 
-import controller.Controller;
 import controller.ControllerInt;
-import controller.FXController;
 import model.Label;
 import model.LabelFactory;
 
@@ -42,6 +40,9 @@ public class ChooseArt implements Command {
 
 		//System.out.println("Введите серийный номер");//FIXME output to chosen source
 		String serial = controller.onReadSerial();
+		if(serial==null) {
+			return;
+		}
 		String name="";
 		String range="";
 		String pinout="";

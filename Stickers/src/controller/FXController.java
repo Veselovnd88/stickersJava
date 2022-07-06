@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
@@ -25,7 +27,7 @@ import model.Model;
 import view.GuiView;
 import view.View;
 
-public class FXController implements ControllerInt{ // implements Initializable {
+public class FXController implements ControllerInt{
 	
 	private Model model;
 	private View<TextArea> view;
@@ -36,7 +38,9 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	@FXML
 	private Button placeButton;
 	@FXML 
-	private Button SaveButton;
+	private Button saveButton;
+	@FXML
+	private Button delete_btn;
 	@FXML
 	private ChoiceBox<Integer> pos_btn;
 	@FXML
@@ -54,38 +58,44 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	@FXML
 	private ToggleGroup group1;
 
-	private ControllerInt controller;
-	
 	public FXController() {
 		//this.controller = new Controller();//вообще может сделать интерфейс контроллер или абстр
-		this.view = new GuiView();
-		this.model = new MainModel();
-
-		
+		this.view = new GuiView();//присваивается вью
+		this.model = new MainModel();//основная модель
 		CommandExecutor.init(this);
 		
 	}
 
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
-		CommandExecutor.execute(Operation.SAVE);
+		CommandExecutor.execute(Operation.SAVE);//сохранение
 		
 	}
 	
 	@FXML
 	private void onMouseShowClick() throws InterruptOperationException {
-		CommandExecutor.execute(Operation.SHOW);
+		CommandExecutor.execute(Operation.SHOW);//показать все
 	}
 	
 	@FXML
 	private void onOpenFolderClick() throws IOException {
-		//	Desktop.getDesktop().open(new File("c:\\StickersADZ"));
-		this.sendMessage("Файл для печати находится тут c:\\StickersADZ");
+		String os = System.getProperty("os.name").toLowerCase();
+
+			if(os.startsWith("windows")){
+				Desktop.getDesktop().open(new File("c:\\StickersADZ"));
+					}
+			else {
+				sendMessage("Для "+ System.getProperty("os.name")+" не реализовано");
+			}
+		
+	}
+	@FXML
+	private void onMouseDeleteClick() {
 		
 	}
 	
 	@FXML
-	public void onMousePlaceClick() throws InterruptOperationException {
+	public void onMousePlaceClick() throws InterruptOperationException {//размещает этикетки на файле
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();
 		String rbText = selection.getText();
 		int art;
@@ -105,25 +115,17 @@ public class FXController implements ControllerInt{ // implements Initializable 
 			default:art = 1;
 			}
 		
-		onSetArt(art);				
+		model.setArt(art);		
 		int pos = pos_btn.getValue();
-		onSetPos(pos);
+		model.setPos(pos);
 		CommandExecutor.execute(Operation.CHOOSE);
 	}
 	
-	@Override
-	public void onSetArt(int art) {//устанавливает значение артикула от пользователя
-		model.setArt(art);
-	}
+	
 	
 	@Override
 	public int onGetArt() {//забирает артикул из модели - для размещения
 		return model.getArt();
-	}
-	
-	@Override
-	public void onSetPos(int pos) {//устанавливает позицию для размещения
-		model.setPos(pos);
 	}
 	
 	@Override
@@ -137,12 +139,20 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	
 	@Override
 	public void onSave() throws InterruptOperationException {
+		String os = System.getProperty("os.name").toLowerCase();
+		
+		
+		
 		if(model.getMap().isEmpty()) {
 			this.sendMessage("Список для печати пустой, печатать нечего");
 			return;
 		}//проверка на пустую мапу, если ничего не добавлено
-	//	model.save();
-		sendMessage("Файл сохранен в директорию c:\\StickersADZ");
+		if(os.startsWith("windows")){
+			model.save();
+		sendMessage("Файл сохранен в директорию c:\\StickersADZ");}
+		else {
+			sendMessage("Для "+ System.getProperty("os.name")+" не реализовано");
+		}		
 	}
 	
 	@FXML
@@ -151,15 +161,12 @@ public class FXController implements ControllerInt{ // implements Initializable 
 				8,9,10,11,12);
 		pos_btn.setItems(positions);
 		pos_btn.setValue(1);
-		text_area.setPrefRowCount(14);
-		//text_area.setText("1 \n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n 10\n 11\n 12\n");
-		
+		text_area.setPrefRowCount(14);		
 	}
 
 	@Override
 	public Model getModel() {
-		
-		return this.model;//FIXME есть вопросы наверное с моделью только тут должны быть манипуляции
+		return this.model;
 	}
 	
 	@Override
@@ -188,20 +195,25 @@ public class FXController implements ControllerInt{ // implements Initializable 
 	
 	@Override
 	public String onReadSerial() {
-		return serial_area.getText();
+		String serial = serial_area.getText();
+		if (serial.length()==0) {
+			Alert al = new Alert(AlertType.WARNING);
+			al.setTitle("Предупреждение");
+			al.setHeaderText("Нет серийного номера");
+			al.show();			
+			return null;
+		}
+		return serial ;
 	}
 	/*происходит проверка если на позиции уже есть элемент - и диалог - перезаписывать или нет*/
 	
 	@Override
 	public boolean checkForRewriting() {
 		int pos = onGetPos();
-		Map<Integer, model.Label> map = this.getModel().getMap();
-		
-		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
-			
+		Map<Integer, model.Label> map = this.getModel().getMap();		
+		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет			
 			String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
-					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());
-			
+					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());			
 			this.sendMessage(message_execute);
 			if(!this.onYesOrNo()) {
 				this.sendMessage("Позиция не записана");

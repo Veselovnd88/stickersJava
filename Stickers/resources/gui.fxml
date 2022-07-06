@@ -86,15 +86,16 @@
             </RadioButton>
             <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
             <TextArea fx:id="text_area" editable="false" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Информация" />
-            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
-            <Button fx:id="saveButton" layoutX="228.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
-            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="388.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
+            <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
+            <Button fx:id="saveButton" layoutX="220.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
+            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="480.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></ChoiceBox>
-            <Label layoutX="324.0" layoutY="108.0" text="Позиция" />
-            <Button fx:id="sho_btn" layoutX="127.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="87.0" text="Показать" />
-            <Button fx:id="folder_btn" layoutX="493.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" text="Открыть папку" />
+            <Label layoutX="420.0" layoutY="108.0" text="Позиция" />
+            <Button fx:id="sho_btn" layoutX="120.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="80.0" text="Показать" />
+            <Button fx:id="folder_btn" layoutX="183.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" prefHeight="25.0" prefWidth="111.0" text="Открыть папку" />
+            <Button fx:id="delete_btn" layoutX="320.0" layoutY="104.0" minWidth="80.0" mnemonicParsing="false" onMouseClicked="#onMouseDeleteClick" prefHeight="25.0" prefWidth="80.0" text="Удалить" />
       </children>
     </AnchorPane>
   </children>
