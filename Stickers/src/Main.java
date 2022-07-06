@@ -1,10 +1,4 @@
-import controller.Controller;
 import javafx.application.Application;
-import model.MainModel;
-import model.Model;
-import view.ConsoleView;
-import view.GuiView;
-import view.View;
 import view.WindowFx;
 
 public class Main {

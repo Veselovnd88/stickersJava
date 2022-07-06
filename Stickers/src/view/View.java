@@ -1,12 +1,8 @@
 package view;
 
-import java.io.PrintStream;
-
 import command.Operation;
-import javafx.scene.control.TextArea;
 
-
-public interface View<T> {
+public interface View <T>{
 	boolean YesOrNo();
 	Integer readOp();
 	Integer readPos();

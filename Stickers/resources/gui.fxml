@@ -3,13 +3,10 @@
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
-
   This file is available and licensed under the following license:
-
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions
   are met:
-
   - Redistributions of source code must retain the above copyright
     notice, this list of conditions and the following disclaimer.
   - Redistributions in binary form must reproduce the above copyright
@@ -18,7 +15,6 @@
   - Neither the name of Oracle Corporation nor the names of its
     contributors may be used to endorse or promote products derived
     from this software without specific prior written permission.
-
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -60,7 +56,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="400.0" minWidth="500.0" prefHeight="374.0" prefWidth="655.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="32.0" layoutY="20.0" text="Выберите номенклатуру из списка и нажмите Разместить" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="mainLbl" contentDisplay="CENTER" layoutX="26.0" layoutY="20.0" prefHeight="20.0" prefWidth="594.0" text="Выберите номенклатуру и позицию стикера и нажмите Разместить" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
@@ -91,24 +87,14 @@
             <TextField fx:id="serial_area" layoutX="20.0" layoutY="145.0" promptText="Серийный номер" text="1234123456" />
             <TextArea fx:id="text_area" editable="false" layoutX="20.0" layoutY="187.0" prefHeight="127.0" prefWidth="594.0" promptText="Информация" text="Информация" />
             <Button fx:id="placeButton" layoutX="20.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMousePlaceClick" text="Разместить" />
-            <Button fx:id="saveButton" layoutX="198.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
-            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="355.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
+            <Button fx:id="saveButton" layoutX="228.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseSaveClick" text="Сохранить" />
+            <ChoiceBox fx:id="pos_btn" accessibleText="1" cache="true" layoutX="388.0" layoutY="104.0" prefHeight="24.0" prefWidth="67.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></ChoiceBox>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <Label layoutX="324.0" layoutY="108.0" text="Позиция" />
             <Button fx:id="sho_btn" layoutX="127.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onMouseShowClick" prefHeight="25.0" prefWidth="87.0" text="Показать" />
             <Button fx:id="folder_btn" layoutX="493.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#onOpenFolderClick" text="Открыть папку" />
-=======
-            <Label layoutX="290.0" layoutY="108.0" text="Позиция" />
-            <Button fx:id="sho_btn" layoutX="104.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Показать" />
->>>>>>> parent of cb4ecb6... choose - OK
-=======
-            <Label layoutX="290.0" layoutY="108.0" text="Позиция" />
-            <Button fx:id="sho_btn" layoutX="104.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Показать" />
->>>>>>> branch 'GUIView' of https://github.com/Veselovnd88/stickersJava.git
       </children>
     </AnchorPane>
   </children>

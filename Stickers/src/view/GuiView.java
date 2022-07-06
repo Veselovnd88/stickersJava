@@ -84,7 +84,7 @@ public class GuiView implements View<TextArea>{
 
 	@Override
 	public void sendMessage(TextArea source, String message) {
-		// TODO Auto-generated method stub
+		source.setText(message);
 		
 	}
 

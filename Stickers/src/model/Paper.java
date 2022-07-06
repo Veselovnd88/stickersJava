@@ -93,12 +93,12 @@ public class Paper {
 	
 	
 	public void save() throws InterruptOperationException {
-		Path path = Path.of("c:\\StickersADZ");
+		Path path = Path.of("c:\\StickersADZ");//TODO вот это класс должен получать с контролера или модели
 		
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date date = new Date();
 		String timeStamp = formater.format(date);
-		Path file = Path.of("c:\\StickersADZ\\sticker_"+timeStamp+".jpg");
+		Path file = Path.of("c:\\StickersADZ\\sticker_"+timeStamp+".jpg");//TODO имя файла соотв см выше
 		try {
 			if(!Files.exists(path)) {
 				Files.createDirectory(Path.of("c:\\StickersADZ"));}
@@ -106,8 +106,9 @@ public class Paper {
 				if(!Files.exists(file)) {
 					file = Files.createFile(file);
 				}
-				System.out.println("Файл сохранен "+ file.toAbsolutePath().toString());
+				//System.out.println("Файл сохранен "+ file.toAbsolutePath().toString());
 				//сохранение файла
+				//Эта история будет отображаться в контроллере - будет отправлять на вью
 				//TODO сделать сразу раскрытие этой папки в виндоус
 				BufferedImage bi = (BufferedImage) myImage;	
 				ImageIO.write(bi, "jpg", file.toFile());}
@@ -119,7 +120,7 @@ public class Paper {
 
 
 
-	//TODO сохранение в pdf
+	// сохранение в pdf
 	public void savePdf() {
 		File file = new File("src/controller/outfile/"+"paperPdf".
 				replace(' ', '_') + ".pdf");
