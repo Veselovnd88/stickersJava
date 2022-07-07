@@ -18,8 +18,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.apache.pdfbox.rendering.PDFRenderer;
-
 import exception.InterruptOperationException;
 
 
