@@ -1,5 +1,3 @@
-import controller.ConsoleController;
-import controller.ControllerInt;
 import javafx.application.Application;
 import view.WindowFx;
 

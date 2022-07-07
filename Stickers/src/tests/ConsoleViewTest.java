@@ -1,16 +1,10 @@
 package tests;
 
-import static org.junit.Assert.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-
-import command.Operation;
-import view.ConsoleView;
 
 public class ConsoleViewTest {
 

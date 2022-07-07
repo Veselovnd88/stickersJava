@@ -1,7 +1,5 @@
 package controller;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
@@ -78,15 +76,8 @@ public class FXController implements ControllerInt{
 	}
 	
 	@FXML
-	private void onOpenFolderClick() throws IOException {
-		String os = System.getProperty("os.name").toLowerCase();
-
-			if(os.startsWith("windows")){
-				Desktop.getDesktop().open(new File("c:\\StickersADZ"));
-					}
-			else {
-				sendMessage("Для "+ System.getProperty("os.name")+" не реализовано");
-			}
+	private void onOpenFolderClick() throws IOException, InterruptOperationException {
+		CommandExecutor.execute(Operation.OPEN);
 		
 	}
 	@FXML
@@ -119,8 +110,13 @@ public class FXController implements ControllerInt{
 	}
 	@FXML
 	private void onClickHelpConsole() {
-		//ControllerInt console = new ConsoleController();
-		//TODO должно быть в отдельном потоке, а так всё работает
+		Thread thread = new Thread(){
+			@Override
+			public void run() {
+				new ConsoleController();
+			}
+		};
+		thread.start();
 	}
 	
 	@FXML

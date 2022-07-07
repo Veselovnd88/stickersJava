@@ -21,6 +21,7 @@ public class CommandExecutor {
 		allCommands.put(Operation.CHOOSE, new ChooseArt(controller));
 		allCommands.put(Operation.SHOW, new Show(controller));
 		allCommands.put(Operation.SAVE, new Save(controller));
+		allCommands.put(Operation.OPEN, new OpenFolder(controller));
 		allCommands.put(Operation.EXIT, new Exit());
 
 	}

@@ -5,6 +5,7 @@ public enum Operation {
 	CHOOSE,
 	SHOW,
 	SAVE,
+	OPEN,
 	EXIT;
 	
 	public static Operation getOpByOrdinal(Integer i) {
@@ -12,13 +13,14 @@ public enum Operation {
 		case 0:
 			return INFO;
 		case 1:
-			return CHOOSE;
-		
+			return CHOOSE;	
 		case 2:
 			return SHOW;
 		case 3:
 			return SAVE;
 		case 4:
+			return OPEN;
+		case 5:
 			return EXIT;
 			
 		}

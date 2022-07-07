@@ -30,14 +30,6 @@ public class Label extends AbstractLabel{
 	}
 	
 	public void addSigns() {
-		//File eacFile = new File("src/resources/EAC.png");
-		
-		//String test = "/EAC.png";
-		//InputStream is = Label.class.getResourceAsStream(test);
-		
-		
-		//File rosreestrFile = new File("src/resources/reestr.png");
-		//File adzFile = new File ("src/resources/adz.png");
 		try {
 			
 			BufferedImage eac = ImageIO.read(Label.class.getResourceAsStream("/EAC.png"));

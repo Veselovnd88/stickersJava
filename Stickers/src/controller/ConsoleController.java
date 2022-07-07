@@ -49,7 +49,8 @@ public class ConsoleController implements ControllerInt {//контроллер 
 			String messageOp = "Выберите операцию 1 - Выбор номенклатуры,"
 							+ " 2 - Показать список того что печатаем, "
 							+ "3 - Сохранить в файл "+
-							"4 - Выйти";
+							"4 - Окрыть папку"+
+							"5 - Выйти";
 			this.sendMessage(messageOp);
 			while(true) {
 					try {
@@ -124,9 +125,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 		model.save();
 	}
 	
-	//TODO команда удалить
-	//TODO команда открыть папку
-	//
+
 	public int onGetPos() throws InterruptOperationException {
 		int pos = -1;
 		String messagePos = 

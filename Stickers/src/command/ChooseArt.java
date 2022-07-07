@@ -27,23 +27,6 @@ public class ChooseArt implements Command {
 		{
 			return;//Проверка есть ли позиция или нет
 		}
-		/*if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет
-			//
-			//String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
-					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());
-			
-			controller.sendMessage(message_execute);
-			//System.out.println("Эта позиция занята "+map.get(pos).getName()+" "+//output to chosen source
-				//	map.get(pos).getSerial()+"\nПерезаписать?"
-			//);
-			if(!controller.onYesOrNo()) {
-				controller.sendMessage("Позиция не записана");
-				return;}
-			}*/
-
-	
-
-		//System.out.println("Введите серийный номер");//FIXME output to chosen source
 
 		String name="";
 		String range="";
