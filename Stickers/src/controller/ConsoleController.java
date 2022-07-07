@@ -122,7 +122,7 @@ public class ConsoleController implements ControllerInt {//контроллер 
 	}
 	
 	public void onSave() throws InterruptOperationException {
-		model.save();
+		CommandExecutor.execute(Operation.SAVE);
 	}
 	
 

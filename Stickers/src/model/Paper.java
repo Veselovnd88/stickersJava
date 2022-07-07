@@ -90,23 +90,23 @@ public class Paper {
 	}
 	
 	
-	public void save() throws InterruptOperationException {
-		Path path = Path.of("c:\\StickersADZ");
+	public void save(String directory) throws InterruptOperationException {
+	//	String windows = "c:\\StickersADZ";
+		//String linux = "/home/nikolay/StickersADZ";
+		Path path = Path.of(directory);//("c:\\StickersADZ");
 		
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date date = new Date();
 		String timeStamp = formater.format(date);
-		Path file = Path.of("c:\\StickersADZ\\sticker_"+timeStamp+".jpg");
+		Path file = Path.of(directory+"/_sticker_"+timeStamp+".jpg");
 		try {
 			if(!Files.exists(path)) {
-				Files.createDirectory(Path.of("c:\\StickersADZ"));}
+				System.out.println(path.getFileName());
+				Files.createDirectory(Path.of(directory));}
 			else {
 				if(!Files.exists(file)) {
 					file = Files.createFile(file);
 				}
-				//System.out.println("Файл сохранен "+ file.toAbsolutePath().toString());
-				//сохранение файла
-				//Эта история будет отображаться в контроллере - будет отправлять на вью
 				
 				BufferedImage bi = (BufferedImage) myImage;	
 				ImageIO.write(bi, "jpg", file.toFile());}

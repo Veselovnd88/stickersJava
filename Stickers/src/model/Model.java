@@ -7,7 +7,7 @@ import exception.InterruptOperationException;
 public interface Model {
 	Map<Integer,Label> getMap();
 	Paper getPaper();
-	void save() throws InterruptOperationException;
+	void save(String directory) throws InterruptOperationException;
 	int getArt();
 	int getPos();
 	void setArt(int art);

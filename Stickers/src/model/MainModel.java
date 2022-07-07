@@ -28,11 +28,11 @@ public class MainModel implements Model {
 	}
 
 	@Override
-	public void save() throws InterruptOperationException {
+	public void save(String directory) throws InterruptOperationException {
 		
 
 		paper.placeAll(posLabels);
-		paper.save();
+		paper.save(directory);
 		
 	}
 	@Override
