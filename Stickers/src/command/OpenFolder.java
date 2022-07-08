@@ -22,7 +22,7 @@ public class OpenFolder implements Command {
 
 		if(os.startsWith("windows")){
 			try {
-				Desktop.getDesktop().open(new File("windows"));
+				Desktop.getDesktop().open(new File(windows));
 			} catch (IOException e) {
 				controller.sendMessage("Невозможно открыть папку");
 				return;
