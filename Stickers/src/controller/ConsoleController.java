@@ -49,13 +49,13 @@ public class ConsoleController implements ControllerInt {//контроллер 
 			String messageOp = "Выберите операцию 1 - Выбор номенклатуры,"
 							+ " 2 - Показать список того что печатаем, "
 							+ "3 - Сохранить в файл "+
-							"4 - Окрыть папку"+
+							"4 - Окрыть папку "+
 							"5 - Выйти";
 			this.sendMessage(messageOp);
 			while(true) {
 					try {
 						Integer i = Integer.parseInt(br.readLine().trim());
-						if(i<5&&i>0) {
+						if(i<6&&i>0) {
 							op_num=i;
 							break;}
 						else {
