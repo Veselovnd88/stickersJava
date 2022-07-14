@@ -25,8 +25,8 @@ import model.Model;
 import view.GuiView;
 import view.View;
 
-public class FXController implements ControllerInt{
-	
+public class FXController implements ControllerInt {
+
 	private Model model;
 	private View<TextArea> view;
 	@FXML
@@ -35,7 +35,7 @@ public class FXController implements ControllerInt{
 	private Button folder_btn;
 	@FXML
 	private Button placeButton;
-	@FXML 
+	@FXML
 	private Button saveButton;
 	@FXML
 	private Button delete_btn;
@@ -57,29 +57,30 @@ public class FXController implements ControllerInt{
 	private ToggleGroup group1;
 
 	public FXController() {
-		this.view = new GuiView();//присваивается вью
-		this.model = new MainModel();//основная модель
+		this.view = new GuiView();// присваивается вью
+		this.model = new MainModel();// основная модель
 		CommandExecutor.init(this);
-		
+
 	}
 
 	@FXML
 	public void onMouseSaveClick() throws InterruptOperationException {
-		CommandExecutor.execute(Operation.SAVE);//сохранение
-		
+		CommandExecutor.execute(Operation.SAVE);// сохранение
+
 	}
-	
+
 	@FXML
 	private void onMouseShowClick() throws InterruptOperationException {
-		
-		CommandExecutor.execute(Operation.SHOW);//показать все
+
+		CommandExecutor.execute(Operation.SHOW);// показать все
 	}
-	
+
 	@FXML
 	private void onOpenFolderClick() throws IOException, InterruptOperationException {
 		CommandExecutor.execute(Operation.OPEN);
-		
+
 	}
+
 	@FXML
 	private void onMouseDeleteClick() {
 		Map<Integer, model.Label> map = model.getMap();
@@ -88,29 +89,30 @@ public class FXController implements ControllerInt{
 			this.sendMessage("Еще ничего не добавлено");
 			return;
 		}
-		if(map.containsKey(pos)) {
+		if (map.containsKey(pos)) {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Удаление позиции");
-			alert.setHeaderText("Удалить позицию "+pos);
+			alert.setHeaderText("Удалить позицию " + pos);
 			alert.getButtonTypes().clear();
 			ButtonType yes = new ButtonType("Да");
-			ButtonType no = new ButtonType("Нет");			
+			ButtonType no = new ButtonType("Нет");
 			alert.getButtonTypes().addAll(yes, no);
-		      Optional<ButtonType> option = alert.showAndWait();
+			Optional<ButtonType> option = alert.showAndWait();
 
-		      if (option.get() == null) {
-		    	  this.sendMessage("Ничего не выбрано, позиция не удалена");
-		      } else if (option.get() == yes) {
-		    	  map.remove(pos);
-		    	  this.sendMessage(String.format("Позиция %s удалена",pos));
-		      } else if (option.get() == no) {
-		    	  this.sendMessage(String.format("Позиция %s не удалена", pos));
-		      } 
+			if (option.get() == null) {
+				this.sendMessage("Ничего не выбрано, позиция не удалена");
+			} else if (option.get() == yes) {
+				map.remove(pos);
+				this.sendMessage(String.format("Позиция %s удалена", pos));
+			} else if (option.get() == no) {
+				this.sendMessage(String.format("Позиция %s не удалена", pos));
+			}
 		}
 	}
+
 	@FXML
 	private void onClickHelpConsole() {
-		Thread thread = new Thread(){
+		Thread thread = new Thread() {
 			@Override
 			public void run() {
 				new ConsoleController();
@@ -118,128 +120,131 @@ public class FXController implements ControllerInt{
 		};
 		thread.start();
 	}
-	
+
 	@FXML
-	private void onClickHelpAbout(){
+	private void onClickHelpAbout() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("Информация о программе");
-		alert.setHeaderText("Программа для формирования листа с этикетками\n"
-				+ "для датчиков давления\n"
+		alert.setHeaderText("Программа для формирования листа с этикетками\n" + "для датчиков давления\n"
 				+ "Обратная связь: veselovnd@gmail.com");
 		alert.show();
 	}
 
 	@FXML
-	public void onMousePlaceClick() throws InterruptOperationException {//размещает этикетки на файле
+	public void onMousePlaceClick() throws InterruptOperationException {// размещает этикетки на файле
 		RadioButton selection = (RadioButton) group1.getSelectedToggle();
 		String rbText = selection.getText();
 		int art;
-		switch(rbText) {
-			case "20.11 1 MPa":
-				art = 1;
-				break;
-			case "20.11 0.6 MPa":
-				art = 2;
-				break;
-			case "20.11 10 bar":
-				art = 3;
-				break;
-			case "20.11 6 bar":
-				art = 4;
-				break;
-			default:art = 1;
-			}
-		
-		model.setArt(art);		
+		switch (rbText) {
+		case "20.11 1 MPa":
+			art = 1;
+			break;
+		case "20.11 0.6 MPa":
+			art = 2;
+			break;
+		case "20.11 10 bar":
+			art = 3;
+			break;
+		case "20.11 6 bar":
+			art = 4;
+			break;
+		default:
+			art = 1;
+		}
+
+		model.setArt(art);
 		int pos = pos_btn.getValue();
 		model.setPos(pos);
 		CommandExecutor.execute(Operation.CHOOSE);
 	}
-	
-	
-	
+
 	@Override
-	public int onGetArt() {//забирает артикул из модели - для размещения
+	public int onGetArt() {// забирает артикул из модели - для размещения
 		return model.getArt();
 	}
-	
+
 	@Override
-	public int onGetPos() {//забирает позицию
+	public int onGetPos() {// забирает позицию
 		return model.getPos();
 	}
+
 	@Override
-	public void sendMessage(String message) {//этот метод отправлять сообщение в вью
+	public void sendMessage(String message) {// этот метод отправлять сообщение в вью
 		view.sendMessage(text_area, message);
 	}
-	
+
 	@Override
 	public void onSave() throws InterruptOperationException {
-		CommandExecutor.execute(Operation.SAVE);		
+		CommandExecutor.execute(Operation.SAVE);
 	}
-	
+
 	@FXML
 	public void initialize() {
-		ObservableList<Integer> positions = FXCollections.observableArrayList(1,2,3,4,5,6,7,
-				8,9,10,11,12);
+		ObservableList<Integer> positions = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 		pos_btn.setItems(positions);
 		pos_btn.setValue(1);
-		text_area.setPrefRowCount(14);		
+		text_area.setPrefRowCount(14);
 	}
 
 	@Override
 	public Model getModel() {
 		return this.model;
 	}
-	
+
 	@Override
 	public boolean onYesOrNo() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);//окошко с выбором
+		Alert alert = new Alert(AlertType.CONFIRMATION);// окошко с выбором
 		alert.setTitle("Позиция которую вы хотите добавить уже существует");
 		alert.setHeaderText("Перезаписать позицию");
 		alert.getButtonTypes().clear();
 		ButtonType yes = new ButtonType("Да");
 		ButtonType no = new ButtonType("Нет");
-		
-		alert.getButtonTypes().addAll(yes, no);
-	      Optional<ButtonType> option = alert.showAndWait();
 
-	      if (option.get() == null) {
-	    	  this.sendMessage("Ничего не выбрано, позиция не перезаписалась");
-	        return false;
-	      } else if (option.get() == yes) {
-	    	  	         return true;
-	      } else if (option.get() == no) {
-	         return false;
-	      } else {
-	         return false;
-	      }
+		alert.getButtonTypes().addAll(yes, no);
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get() == null) {
+			this.sendMessage("Ничего не выбрано, позиция не перезаписалась");
+			return false;
+		} else if (option.get() == yes) {
+			return true;
+		} else if (option.get() == no) {
+			return false;
+		} else {
+			return false;
+		}
 	}
-	
+
 	@Override
 	public String onReadSerial() {
 		String serial = serial_area.getText();
-		if (serial.length()==0) {
+		if (serial.length() == 0) {
 			Alert al = new Alert(AlertType.WARNING);
 			al.setTitle("Предупреждение");
 			al.setHeaderText("Нет серийного номера");
-			al.show();			
+			al.show();
 			return null;
 		}
-		return serial ;
+		return serial;
 	}
-	/*происходит проверка если на позиции уже есть элемент - и диалог - перезаписывать или нет*/
-	
+	/*
+	 * происходит проверка если на позиции уже есть элемент - и диалог -
+	 * перезаписывать или нет
+	 */
+
 	@Override
 	public boolean checkForRewriting() {
 		int pos = onGetPos();
-		Map<Integer, model.Label> map = this.getModel().getMap();		
-		if(map.containsKey(pos)){// если эта позиция уже занят то нужно спросить перезаписать или нет			
-			String message_execute = String.format("Эта позиция занята %s %s"//output to chosen source
-					+"\nПерезаписать?",map.get(pos).getName(), map.get(pos).getSerial());			
+		Map<Integer, model.Label> map = this.getModel().getMap();
+		if (map.containsKey(pos)) {// если эта позиция уже занят то нужно спросить перезаписать или нет
+			String message_execute = String.format("Эта позиция занята %s %s"// output to chosen source
+					+ "\nПерезаписать?", map.get(pos).getName(), map.get(pos).getSerial());
 			this.sendMessage(message_execute);
-			if(!this.onYesOrNo()) {
+			if (!this.onYesOrNo()) {
 				this.sendMessage("Позиция не записана");
-				return false;}
+				return false;
 			}
-		return true;}
+		}
+		return true;
+	}
 }
